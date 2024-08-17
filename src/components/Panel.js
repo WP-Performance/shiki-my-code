@@ -5,7 +5,7 @@ import {
 } from '@wordpress/components'
 import {InspectorControls} from '@wordpress/block-editor'
 import {__} from '@wordpress/i18n'
-import {languages, themes} from './options'
+import {languages, themes} from '../options'
 
 const Panel = ({props}) => {
     const {attributes, setAttributes} = props

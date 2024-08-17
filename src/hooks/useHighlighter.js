@@ -6,23 +6,30 @@ import {
 } from "@shikijs/transformers";
 
 const useHighlighter = ({attributes, setAttributes}) => {
+    // token for re-render when attributes lang or theme change
     const [token, setToken] = useState(null)
+    // highlighter instance is ready
+    const [isReady, setIsReady] = useState(false)
+    // highlighter instance
     const highlighter = useRef(null)
 
     useEffect(() => {
-        async function _createHighlighter() {
+        // create highlighter instance
+        const _createHighlighter = async () => {
             const h = await createHighlighter({
                 themes: [attributes.themeLight, attributes.themeDark],
                 langs: [attributes.lang],
             })
             highlighter.current = h
+            setIsReady(true)
         }
 
-        _createHighlighter()
+        _createHighlighter().catch(console.error)
     }, []);
 
     useEffect(() => {
-        async function loadTheme() {
+        // load theme and language when attributes change
+        const loadTheme = async () => {
             if (!highlighter.current) {
                 return
             }
@@ -33,11 +40,12 @@ const useHighlighter = ({attributes, setAttributes}) => {
             setToken(`${attributes.themeLight}-${attributes.themeDark}-${attributes.lang}`)
         }
 
-        loadTheme()
-    }, [attributes.lang, attributes.themeLight, attributes.themeDark]);
+        loadTheme().catch(console.error)
+
+    }, [attributes.lang, attributes.themeLight, isReady, attributes.themeDark]);
 
     useEffect(() => {
-        async function highlightCode(_content) {
+        const highlightCode = (_content) => {
             if (!highlighter.current) {
                 return
             }
@@ -60,7 +68,10 @@ const useHighlighter = ({attributes, setAttributes}) => {
         }
 
         highlightCode(attributes.content)
-    }, [attributes.content, highlighter, token])
+
+    }, [attributes.content, highlighter, token, isReady])
+
+    return {isReady}
 
 }
 

@@ -3,11 +3,12 @@ import {RichText, useBlockProps} from '@wordpress/block-editor';
 import {createBlock, getDefaultBlockName} from '@wordpress/blocks';
 import {useState} from '@wordpress/element';
 // controls
-import Panel from "./panel";
-import Control from "./control";
-import useHighlighter from "./useHighlighter";
+import Panel from "./components/Panel";
+import Control from "./components/Control";
+import Loading from "./components/Loader";
+// hooks
+import useHighlighter from "./hooks/useHighlighter";
 
-import './style.scss';
 
 export default function CodeEdit({
                                      attributes,
@@ -19,11 +20,17 @@ export default function CodeEdit({
 
     const [mode, setMode] = useState('view')
 
-    useHighlighter({attributes, setAttributes})
+    const {isReady} = useHighlighter({attributes, setAttributes})
 
     const blockProps = useBlockProps({
         className: attributes.showNumber ? 'shiki-line-numbers' : '',
     });
+
+    if (!isReady) {
+        return <div style={{textAlign: 'center'}}>
+            <span>{__('Loading code…')}</span><Loading/></div>
+    }
+
     return (
         <>
             <Panel props={{attributes, setAttributes}}/>
