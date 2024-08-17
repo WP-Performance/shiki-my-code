@@ -1,0 +1,145 @@
+/*!***************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./src/style.scss ***!
+  \***************************************************************************************************************************************************************************************************************************************/
+:root {
+  --shiki-line-numbers-color: #999;
+  --shiki-diff-remove-color: rgba(255, 0, 0, 0.2);
+  --shiki-diff-remove-item-color: rgba(255, 0, 0, 1);
+  --shiki-diff-add-color: rgba(0, 128, 0, 0.2);
+  --shiki-diff-add-item-color: rgba(0, 128, 0, 1);
+  --shiki-highlighted-color: rgba(255, 255, 0, 0.3);
+  --shiki-focus-filter: blur(.095rem);
+  --shiki-highlighted-word-color: rgba(255, 255, 0, 0.6);
+  --shiki-highlighted-word-border-color: rgba(200, 200, 200, 0.9);
+}
+
+.wp-block-wpperformance-shiki-my-code:not(.wp-block) pre {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  padding: 1rem 0.7rem;
+  background: transparent;
+}
+
+.wp-block-wpperformance-shiki-my-code pre {
+  overflow-x: auto;
+}
+
+pre.wp-block-wpperformance-shiki-my-code {
+  padding: 1rem;
+  background-color: aliceblue;
+  border: 1px solid #ccc;
+}
+
+.wp-block-wpperformance-shiki-my-code:not(.wp-block) pre code {
+  display: block;
+  width: -moz-fit-content;
+  width: fit-content;
+  min-width: 100%;
+  padding: 0;
+  transition: color 0.5s;
+}
+
+.wp-block-wpperformance-shiki-my-code pre.wp-block code {
+  padding: 0;
+}
+
+/** line numbers */
+.shiki-line-numbers pre.shiki {
+  padding: 1rem 0.7rem;
+}
+
+.shiki-line-numbers pre.shiki code {
+  counter-reset: step;
+  counter-increment: step 0;
+}
+
+.shiki-line-numbers pre.shiki .line::before {
+  content: counter(step);
+  counter-increment: step;
+  width: 1rem;
+  margin-left: 1.5rem;
+  display: inline-block;
+  text-align: left;
+  color: var(--shiki-line-numbers-color, #999);
+}
+
+.wp-block-wpperformance-shiki-my-code:not(.shiki-line-numbers) pre.shiki {
+  padding: 0.7rem;
+}
+
+/** transformer */
+pre.shiki code .diff.remove {
+  background-color: var(--shiki-diff-remove-color, rgba(255, 0, 0, 0.3));
+  opacity: 0.7;
+  width: 100%;
+  display: inline-block;
+}
+
+pre.shiki code .diff.remove:after {
+  content: "-";
+  color: var(--shiki-diff-remove-item-color, rgb(255, 0, 0));
+  position: absolute;
+  right: 2.5rem;
+}
+
+.wp-block-wpperformance-shiki-my-code.wp-block pre.shiki code .diff.remove:after {
+  right: 1.5rem;
+}
+
+pre.shiki code .diff.add {
+  background-color: var(--shiki-diff-add-color, rgba(0, 128, 0, 0.3));
+  opacity: 0.7;
+  width: 100%;
+  display: inline-block;
+}
+
+pre.shiki code .diff.add:after {
+  content: "+";
+  color: var(--shiki-diff-add-item-color, rgb(0, 128, 0));
+  position: absolute;
+  right: 2.5rem;
+}
+
+.wp-block-wpperformance-shiki-my-code.wp-block pre.shiki code .diff.add:after {
+  right: 1.5rem;
+}
+
+pre.shiki code .highlighted {
+  background-color: var(--shiki-highlighted-color, rgba(255, 255, 0, 0.3));
+  transition: background-color 0.5s;
+  width: 100%;
+  display: inline-block;
+}
+
+pre.shiki.has-focused .line:not(.focused) {
+  opacity: 0.7;
+  filter: var(--shiki-focus-filter, blur(0.095rem));
+  transition: filter 0.35s, opacity 0.35s;
+}
+
+pre.shiki .line .highlighted-word {
+  background-color: var(--shiki-highlighted-word-color, rgba(255, 255, 255, 0.1));
+  border: 1px solid var(--shiki-highlighted-word-border-color, rgba(200, 200, 200, 0.7));
+  padding: 1px 3px;
+  margin: -1px -3px;
+  border-radius: 4px;
+}
+
+/** dark theme */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --shiki-diff-remove-color: rgba(255, 0, 0, 0.4);
+    --shiki-diff-add-color: rgba(0, 128, 0, 0.4);
+    --shiki-highlighted-color: rgba(255, 255, 0, 0.1);
+    --shiki-highlighted-word-color: rgba(255, 255, 0, 0.2);
+  }
+  .shiki,
+  .shiki span {
+    color: var(--shiki-dark) !important;
+  }
+  .shiki,
+  .shiki span.line:not(.diff, .highlighted-word, .highlighted) {
+    background-color: var(--shiki-dark-bg) !important;
+  }
+}

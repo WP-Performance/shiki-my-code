@@ -1,0 +1,64 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "wpperformance/shiki-my-code",
+  "version": "0.0.1",
+  "title": "Shiki My Code",
+  "category": "widgets",
+  "icon": "code",
+  "description": "Highlight your code with Shiki",
+  "example": {
+    "attributes": {
+      "theme": "github-light",
+      "language": "php",
+      "content": "<code>echo 'Hello, World!';</code>"
+    }
+  },
+  "attributes": {
+    "lang": {
+      "type": "string",
+      "default": "php"
+    },
+    "themeLight": {
+      "type": "string",
+      "default": "github-light-default"
+    },
+    "themeDark": {
+      "type": "string",
+      "default": "github-dark-default"
+    },
+    "contentHighlight": {
+      "type": "string"
+    },
+    "showNumber": {
+      "type": "boolean",
+      "default": true
+    },
+    "content": {
+      "type": "string"
+    }
+  },
+  "supports": {
+    "align": [
+      "wide",
+      "full"
+    ],
+    "anchor": true,
+    "spacing": {
+      "margin": [
+        "top",
+        "bottom"
+      ],
+      "padding": true,
+      "__experimentalDefaultControls": {
+        "margin": false,
+        "padding": false
+      }
+    }
+  },
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css",
+  "render": "file:./render.php",
+  "textdomain": "shiki-my-code"
+}
