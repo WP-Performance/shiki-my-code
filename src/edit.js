@@ -6,7 +6,10 @@ import {useEffect, useState} from '@wordpress/element';
 import Panel from "./panel";
 import Control from "./control";
 // shiki
-import {codeToHtml} from "shiki";
+import {
+    codeToHtml, BundledLanguage,
+    BundledTheme,
+} from "shiki/bundle/web";
 import {
     transformerNotationDiff,
     transformerNotationHighlight,
@@ -28,7 +31,9 @@ export default function CodeEdit({
 
     useEffect(() => {
         async function highlightCode(_content) {
-            const code = await codeToHtml(_content, {
+            // replace &lt; to <
+            const _c = _content?.replace(/&lt;/g, '<');
+            const code = await codeToHtml(_c, {
                 lang: attributes.lang,
                 themes: {
                     light: attributes.themeLight,

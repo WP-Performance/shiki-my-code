@@ -93,7 +93,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _panel__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./panel */ "./src/panel.js");
 /* harmony import */ var _control__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./control */ "./src/control.js");
-/* harmony import */ var shiki__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! shiki */ "./node_modules/shiki/dist/bundle-full.mjs");
+/* harmony import */ var shiki_bundle_web__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! shiki/bundle/web */ "./node_modules/shiki/dist/bundle-web.mjs");
 /* harmony import */ var _shikijs_transformers__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @shikijs/transformers */ "./node_modules/@shikijs/transformers/dist/index.mjs");
 /* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./style.scss */ "./src/style.scss");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react/jsx-runtime */ "react/jsx-runtime");
@@ -120,7 +120,9 @@ function CodeEdit({
   const [mode, setMode] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_3__.useState)('view');
   (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_3__.useEffect)(() => {
     async function highlightCode(_content) {
-      const code = await (0,shiki__WEBPACK_IMPORTED_MODULE_8__.codeToHtml)(_content, {
+      // replace &lt; to <
+      const _c = _content?.replace(/&lt;/g, '<');
+      const code = await (0,shiki_bundle_web__WEBPACK_IMPORTED_MODULE_8__.codeToHtml)(_c, {
         lang: attributes.lang,
         themes: {
           light: attributes.themeLight,
@@ -455,83 +457,14 @@ const languages = [{
   value: 'text',
   label: 'Text'
 }, {
-  "value": "abap",
-  "label": "ABAP"
-}, {
-  "value": "actionscript-3",
-  "label": "ActionScript"
-}, {
-  "value": "ada",
-  "label": "Ada"
-}, {
-  "value": "angular-expression",
-  "label": "angular-expression"
-}, {
   "value": "angular-html",
   "label": "Angular HTML"
-}, {
-  "value": "angular-inline-style",
-  "label": "angular-inline-style"
-}, {
-  "value": "angular-inline-template",
-  "label": "angular-inline-template"
-}, {
-  "value": "angular-let-declaration",
-  "label": "angular-let-declaration"
-}, {
-  "value": "angular-template-blocks",
-  "label": "angular-template-blocks"
-}, {
-  "value": "angular-template",
-  "label": "angular-template"
 }, {
   "value": "angular-ts",
   "label": "Angular TypeScript"
 }, {
-  "value": "apache",
-  "label": "Apache Conf"
-}, {
-  "value": "apex",
-  "label": "Apex"
-}, {
-  "value": "apl",
-  "label": "APL"
-}, {
-  "value": "applescript",
-  "label": "AppleScript"
-}, {
-  "value": "ara",
-  "label": "Ara"
-}, {
-  "value": "asciidoc",
-  "label": "AsciiDoc"
-}, {
-  "value": "asm",
-  "label": "Assembly"
-}, {
   "value": "astro",
   "label": "Astro"
-}, {
-  "value": "awk",
-  "label": "AWK"
-}, {
-  "value": "ballerina",
-  "label": "Ballerina"
-}, {
-  "value": "bat",
-  "label": "Batch File"
-}, {
-  "value": "beancount",
-  "label": "Beancount"
-}, {
-  "value": "berry",
-  "label": "Berry"
-}, {
-  "value": "bibtex",
-  "label": "BibTeX"
-}, {
-  "value": "bicep",
-  "label": "Bicep"
 }, {
   "value": "blade",
   "label": "Blade"
@@ -539,203 +472,26 @@ const languages = [{
   "value": "c",
   "label": "C"
 }, {
-  "value": "cadence",
-  "label": "Cadence"
-}, {
-  "value": "clarity",
-  "label": "Clarity"
-}, {
-  "value": "clojure",
-  "label": "Clojure"
-}, {
-  "value": "cmake",
-  "label": "CMake"
-}, {
-  "value": "cobol",
-  "label": "COBOL"
-}, {
-  "value": "codeowners",
-  "label": "CODEOWNERS"
-}, {
-  "value": "codeql",
-  "label": "CodeQL"
-}, {
   "value": "coffee",
   "label": "CoffeeScript"
-}, {
-  "value": "common-lisp",
-  "label": "Common Lisp"
-}, {
-  "value": "coq",
-  "label": "Coq"
-}, {
-  "value": "cpp-macro",
-  "label": "C++"
 }, {
   "value": "cpp",
   "label": "C++"
 }, {
-  "value": "crystal",
-  "label": "Crystal"
-}, {
-  "value": "csharp",
-  "label": "C#"
-}, {
   "value": "css",
   "label": "CSS"
-}, {
-  "value": "csv",
-  "label": "CSV"
-}, {
-  "value": "cue",
-  "label": "CUE"
-}, {
-  "value": "cypher",
-  "label": "Cypher"
-}, {
-  "value": "d",
-  "label": "D"
-}, {
-  "value": "dart",
-  "label": "Dart"
-}, {
-  "value": "dax",
-  "label": "DAX"
-}, {
-  "value": "desktop",
-  "label": "Desktop"
-}, {
-  "value": "diff",
-  "label": "Diff"
-}, {
-  "value": "docker",
-  "label": "Dockerfile"
-}, {
-  "value": "dotenv",
-  "label": "dotEnv"
-}, {
-  "value": "dream-maker",
-  "label": "Dream Maker"
-}, {
-  "value": "edge",
-  "label": "Edge"
-}, {
-  "value": "elixir",
-  "label": "Elixir"
-}, {
-  "value": "elm",
-  "label": "Elm"
-}, {
-  "value": "emacs-lisp",
-  "label": "Emacs Lisp"
-}, {
-  "value": "erb",
-  "label": "ERB"
-}, {
-  "value": "erlang",
-  "label": "Erlang"
-}, {
-  "value": "es-tag-css",
-  "label": "es-tag-css"
-}, {
-  "value": "es-tag-glsl",
-  "label": "es-tag-glsl"
-}, {
-  "value": "es-tag-html",
-  "label": "es-tag-html"
-}, {
-  "value": "es-tag-sql",
-  "label": "es-tag-sql"
-}, {
-  "value": "es-tag-xml",
-  "label": "es-tag-xml"
-}, {
-  "value": "fennel",
-  "label": "Fennel"
-}, {
-  "value": "fish",
-  "label": "Fish"
-}, {
-  "value": "fluent",
-  "label": "Fluent"
-}, {
-  "value": "fortran-fixed-form",
-  "label": "Fortran (Fixed Form)"
-}, {
-  "value": "fortran-free-form",
-  "label": "Fortran (Free Form)"
-}, {
-  "value": "fsharp",
-  "label": "F#"
-}, {
-  "value": "gdresource",
-  "label": "GDResource"
-}, {
-  "value": "gdscript",
-  "label": "GDScript"
-}, {
-  "value": "gdshader",
-  "label": "GDShader"
-}, {
-  "value": "genie",
-  "label": "Genie"
-}, {
-  "value": "gherkin",
-  "label": "Gherkin"
-}, {
-  "value": "git-commit",
-  "label": "Git Commit Message"
-}, {
-  "value": "git-rebase",
-  "label": "Git Rebase Message"
-}, {
-  "value": "gleam",
-  "label": "Gleam"
-}, {
-  "value": "glimmer-js",
-  "label": "Glimmer JS"
-}, {
-  "value": "glimmer-ts",
-  "label": "Glimmer TS"
 }, {
   "value": "glsl",
   "label": "GLSL"
 }, {
-  "value": "gnuplot",
-  "label": "Gnuplot"
-}, {
-  "value": "go",
-  "label": "Go"
-}, {
   "value": "graphql",
   "label": "GraphQL"
-}, {
-  "value": "groovy",
-  "label": "Groovy"
-}, {
-  "value": "hack",
-  "label": "Hack"
 }, {
   "value": "haml",
   "label": "Ruby Haml"
 }, {
   "value": "handlebars",
   "label": "Handlebars"
-}, {
-  "value": "haskell",
-  "label": "Haskell"
-}, {
-  "value": "haxe",
-  "label": "Haxe"
-}, {
-  "value": "hcl",
-  "label": "HashiCorp HCL"
-}, {
-  "value": "hjson",
-  "label": "Hjson"
-}, {
-  "value": "hlsl",
-  "label": "HLSL"
 }, {
   "value": "html-derivative",
   "label": "HTML (Derivative)"
@@ -746,26 +502,11 @@ const languages = [{
   "value": "http",
   "label": "HTTP"
 }, {
-  "value": "hxml",
-  "label": "HXML"
-}, {
-  "value": "hy",
-  "label": "Hy"
-}, {
-  "value": "imba",
-  "label": "Imba"
-}, {
-  "value": "ini",
-  "label": "INI"
-}, {
   "value": "java",
   "label": "Java"
 }, {
   "value": "javascript",
   "label": "JavaScript"
-}, {
-  "value": "jinja-html",
-  "label": "jinja-html"
 }, {
   "value": "jinja",
   "label": "Jinja"
@@ -785,53 +526,17 @@ const languages = [{
   "value": "jsonl",
   "label": "JSON Lines"
 }, {
-  "value": "jsonnet",
-  "label": "Jsonnet"
-}, {
-  "value": "jssm",
-  "label": "JSSM"
-}, {
   "value": "jsx",
   "label": "JSX"
 }, {
   "value": "julia",
   "label": "Julia"
 }, {
-  "value": "kotlin",
-  "label": "Kotlin"
-}, {
-  "value": "kusto",
-  "label": "Kusto"
-}, {
-  "value": "latex",
-  "label": "LaTeX"
-}, {
-  "value": "lean",
-  "label": "Lean 4"
-}, {
   "value": "less",
   "label": "Less"
 }, {
-  "value": "liquid",
-  "label": "Liquid"
-}, {
-  "value": "log",
-  "label": "Log file"
-}, {
-  "value": "logo",
-  "label": "Logo"
-}, {
   "value": "lua",
   "label": "Lua"
-}, {
-  "value": "luau",
-  "label": "Luau"
-}, {
-  "value": "make",
-  "label": "Makefile"
-}, {
-  "value": "markdown-vue",
-  "label": "markdown-vue"
 }, {
   "value": "markdown",
   "label": "Markdown"
@@ -839,119 +544,26 @@ const languages = [{
   "value": "marko",
   "label": "Marko"
 }, {
-  "value": "matlab",
-  "label": "MATLAB"
-}, {
   "value": "mdc",
   "label": "MDC"
 }, {
   "value": "mdx",
   "label": "MDX"
 }, {
-  "value": "mermaid",
-  "label": "Mermaid"
-}, {
-  "value": "mojo",
-  "label": "Mojo"
-}, {
-  "value": "move",
-  "label": "Move"
-}, {
-  "value": "narrat",
-  "label": "Narrat Language"
-}, {
-  "value": "nextflow",
-  "label": "Nextflow"
-}, {
-  "value": "nginx",
-  "label": "Nginx"
-}, {
-  "value": "nim",
-  "label": "Nim"
-}, {
-  "value": "nix",
-  "label": "Nix"
-}, {
-  "value": "nushell",
-  "label": "nushell"
-}, {
-  "value": "objective-c",
-  "label": "Objective-C"
-}, {
-  "value": "objective-cpp",
-  "label": "Objective-C++"
-}, {
-  "value": "ocaml",
-  "label": "OCaml"
-}, {
-  "value": "pascal",
-  "label": "Pascal"
-}, {
-  "value": "perl",
-  "label": "Perl"
-}, {
   "value": "php",
   "label": "PHP"
-}, {
-  "value": "plsql",
-  "label": "PL/SQL"
-}, {
-  "value": "po",
-  "label": "Gettext PO"
 }, {
   "value": "postcss",
   "label": "PostCSS"
 }, {
-  "value": "powerquery",
-  "label": "PowerQuery"
-}, {
-  "value": "powershell",
-  "label": "PowerShell"
-}, {
-  "value": "prisma",
-  "label": "Prisma"
-}, {
-  "value": "prolog",
-  "label": "Prolog"
-}, {
-  "value": "proto",
-  "label": "Protocol Buffer 3"
-}, {
   "value": "pug",
   "label": "Pug"
-}, {
-  "value": "puppet",
-  "label": "Puppet"
-}, {
-  "value": "purescript",
-  "label": "PureScript"
 }, {
   "value": "python",
   "label": "Python"
 }, {
-  "value": "qml",
-  "label": "QML"
-}, {
-  "value": "qmldir",
-  "label": "QML Directory"
-}, {
-  "value": "qss",
-  "label": "Qt Style Sheets"
-}, {
   "value": "r",
   "label": "R"
-}, {
-  "value": "racket",
-  "label": "Racket"
-}, {
-  "value": "raku",
-  "label": "Raku"
-}, {
-  "value": "razor",
-  "label": "ASP.NET Razor"
-}, {
-  "value": "reg",
-  "label": "Windows Registry Script"
 }, {
   "value": "regexp",
   "label": "RegExp"
@@ -959,65 +571,20 @@ const languages = [{
   "value": "rel",
   "label": "Rel"
 }, {
-  "value": "riscv",
-  "label": "RISC-V"
-}, {
-  "value": "rst",
-  "label": "reStructuredText"
-}, {
   "value": "ruby",
   "label": "Ruby"
-}, {
-  "value": "rust",
-  "label": "Rust"
-}, {
-  "value": "sas",
-  "label": "SAS"
 }, {
   "value": "sass",
   "label": "Sass"
 }, {
-  "value": "scala",
-  "label": "Scala"
-}, {
-  "value": "scheme",
-  "label": "Scheme"
-}, {
   "value": "scss",
   "label": "SCSS"
-}, {
-  "value": "shaderlab",
-  "label": "ShaderLab"
 }, {
   "value": "shellscript",
   "label": "Shell"
 }, {
-  "value": "shellsession",
-  "label": "Shell Session"
-}, {
-  "value": "smalltalk",
-  "label": "Smalltalk"
-}, {
-  "value": "solidity",
-  "label": "Solidity"
-}, {
-  "value": "soy",
-  "label": "Closure Templates"
-}, {
-  "value": "sparql",
-  "label": "SPARQL"
-}, {
-  "value": "splunk",
-  "label": "Splunk Query Language"
-}, {
   "value": "sql",
   "label": "SQL"
-}, {
-  "value": "ssh-config",
-  "label": "SSH Config"
-}, {
-  "value": "stata",
-  "label": "Stata"
 }, {
   "value": "stylus",
   "label": "Stylus"
@@ -1025,107 +592,29 @@ const languages = [{
   "value": "svelte",
   "label": "Svelte"
 }, {
-  "value": "swift",
-  "label": "Swift"
-}, {
-  "value": "system-verilog",
-  "label": "SystemVerilog"
-}, {
-  "value": "systemd",
-  "label": "Systemd Units"
-}, {
-  "value": "tasl",
-  "label": "Tasl"
-}, {
-  "value": "tcl",
-  "label": "Tcl"
-}, {
-  "value": "templ",
-  "label": "Templ"
-}, {
-  "value": "terraform",
-  "label": "Terraform"
-}, {
-  "value": "tex",
-  "label": "TeX"
-}, {
   "value": "toml",
   "label": "TOML"
 }, {
   "value": "ts-tags",
   "label": "TypeScript with Tags"
 }, {
-  "value": "tsv",
-  "label": "TSV"
-}, {
   "value": "tsx",
   "label": "TSX"
-}, {
-  "value": "turtle",
-  "label": "Turtle"
-}, {
-  "value": "twig",
-  "label": "Twig"
 }, {
   "value": "typescript",
   "label": "TypeScript"
 }, {
-  "value": "typespec",
-  "label": "TypeSpec"
-}, {
-  "value": "typst",
-  "label": "Typst"
-}, {
-  "value": "v",
-  "label": "V"
-}, {
-  "value": "vala",
-  "label": "Vala"
-}, {
-  "value": "vb",
-  "label": "Visual Basic"
-}, {
-  "value": "verilog",
-  "label": "Verilog"
-}, {
-  "value": "vhdl",
-  "label": "VHDL"
-}, {
-  "value": "viml",
-  "label": "Vim Script"
-}, {
-  "value": "vue-directives",
-  "label": "vue-directives"
-}, {
   "value": "vue-html",
   "label": "Vue HTML"
-}, {
-  "value": "vue-interpolations",
-  "label": "vue-interpolations"
-}, {
-  "value": "vue-sfc-style-variable-injection",
-  "label": "vue-sfc-style-variable-injection"
 }, {
   "value": "vue",
   "label": "Vue"
 }, {
-  "value": "vyper",
-  "label": "Vyper"
-}, {
   "value": "wasm",
   "label": "WebAssembly"
 }, {
-  "value": "wenyan",
-  "label": "Wenyan"
-}, {
   "value": "wgsl",
   "label": "WGSL"
-}, {
-  "value": "wikitext",
-  "label": "Wikitext"
-}, {
-  "value": "wolfram",
-  "label": "Wolfram"
 }, {
   "value": "xml",
   "label": "XML"
@@ -1135,12 +624,6 @@ const languages = [{
 }, {
   "value": "yaml",
   "label": "YAML"
-}, {
-  "value": "zenscript",
-  "label": "ZenScript"
-}, {
-  "value": "zig",
-  "label": "Zig"
 }];
 
 /***/ }),
@@ -10852,22 +10335,22 @@ function transformerMetaHighlight(options = {}) {
 
 /***/ }),
 
-/***/ "./node_modules/shiki/dist/bundle-full.mjs":
-/*!*************************************************!*\
-  !*** ./node_modules/shiki/dist/bundle-full.mjs ***!
-  \*************************************************/
+/***/ "./node_modules/shiki/dist/bundle-web.mjs":
+/*!************************************************!*\
+  !*** ./node_modules/shiki/dist/bundle-web.mjs ***!
+  \************************************************/
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   FontStyle: () => (/* reexport safe */ _shikijs_core__WEBPACK_IMPORTED_MODULE_2__.FontStyle),
-/* harmony export */   ShikiError: () => (/* reexport safe */ _shikijs_core__WEBPACK_IMPORTED_MODULE_2__.ShikiError),
-/* harmony export */   addClassToHast: () => (/* reexport safe */ _shikijs_core__WEBPACK_IMPORTED_MODULE_2__.addClassToHast),
-/* harmony export */   applyColorReplacements: () => (/* reexport safe */ _shikijs_core__WEBPACK_IMPORTED_MODULE_2__.applyColorReplacements),
-/* harmony export */   bundledLanguages: () => (/* reexport safe */ _langs_mjs__WEBPACK_IMPORTED_MODULE_0__.bundledLanguages),
-/* harmony export */   bundledLanguagesAlias: () => (/* reexport safe */ _langs_mjs__WEBPACK_IMPORTED_MODULE_0__.bundledLanguagesAlias),
-/* harmony export */   bundledLanguagesBase: () => (/* reexport safe */ _langs_mjs__WEBPACK_IMPORTED_MODULE_0__.bundledLanguagesBase),
-/* harmony export */   bundledLanguagesInfo: () => (/* reexport safe */ _langs_mjs__WEBPACK_IMPORTED_MODULE_0__.bundledLanguagesInfo),
+/* harmony export */   FontStyle: () => (/* reexport safe */ _shikijs_core__WEBPACK_IMPORTED_MODULE_0__.FontStyle),
+/* harmony export */   ShikiError: () => (/* reexport safe */ _shikijs_core__WEBPACK_IMPORTED_MODULE_0__.ShikiError),
+/* harmony export */   addClassToHast: () => (/* reexport safe */ _shikijs_core__WEBPACK_IMPORTED_MODULE_0__.addClassToHast),
+/* harmony export */   applyColorReplacements: () => (/* reexport safe */ _shikijs_core__WEBPACK_IMPORTED_MODULE_0__.applyColorReplacements),
+/* harmony export */   bundledLanguages: () => (/* binding */ bundledLanguages),
+/* harmony export */   bundledLanguagesAlias: () => (/* binding */ bundledLanguagesAlias),
+/* harmony export */   bundledLanguagesBase: () => (/* binding */ bundledLanguagesBase),
+/* harmony export */   bundledLanguagesInfo: () => (/* binding */ bundledLanguagesInfo),
 /* harmony export */   bundledThemes: () => (/* reexport safe */ _themes_mjs__WEBPACK_IMPORTED_MODULE_1__.bundledThemes),
 /* harmony export */   bundledThemesInfo: () => (/* reexport safe */ _themes_mjs__WEBPACK_IMPORTED_MODULE_1__.bundledThemesInfo),
 /* harmony export */   codeToHast: () => (/* binding */ codeToHast),
@@ -10875,47 +10358,46 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   codeToTokens: () => (/* binding */ codeToTokens),
 /* harmony export */   codeToTokensBase: () => (/* binding */ codeToTokensBase),
 /* harmony export */   codeToTokensWithThemes: () => (/* binding */ codeToTokensWithThemes),
-/* harmony export */   createCssVariablesTheme: () => (/* reexport safe */ _theme_css_variables_mjs__WEBPACK_IMPORTED_MODULE_3__.createCssVariablesTheme),
+/* harmony export */   createCssVariablesTheme: () => (/* reexport safe */ _theme_css_variables_mjs__WEBPACK_IMPORTED_MODULE_2__.createCssVariablesTheme),
 /* harmony export */   createHighlighter: () => (/* binding */ createHighlighter),
-/* harmony export */   createHighlighterCore: () => (/* reexport safe */ _shikijs_core__WEBPACK_IMPORTED_MODULE_2__.createHighlighterCore),
-/* harmony export */   createPositionConverter: () => (/* reexport safe */ _shikijs_core__WEBPACK_IMPORTED_MODULE_2__.createPositionConverter),
-/* harmony export */   createShikiInternal: () => (/* reexport safe */ _shikijs_core__WEBPACK_IMPORTED_MODULE_2__.createShikiInternal),
-/* harmony export */   createSingletonShorthands: () => (/* reexport safe */ _shikijs_core__WEBPACK_IMPORTED_MODULE_2__.createSingletonShorthands),
-/* harmony export */   createdBundledHighlighter: () => (/* reexport safe */ _shikijs_core__WEBPACK_IMPORTED_MODULE_2__.createdBundledHighlighter),
+/* harmony export */   createHighlighterCore: () => (/* reexport safe */ _shikijs_core__WEBPACK_IMPORTED_MODULE_0__.createHighlighterCore),
+/* harmony export */   createPositionConverter: () => (/* reexport safe */ _shikijs_core__WEBPACK_IMPORTED_MODULE_0__.createPositionConverter),
+/* harmony export */   createShikiInternal: () => (/* reexport safe */ _shikijs_core__WEBPACK_IMPORTED_MODULE_0__.createShikiInternal),
+/* harmony export */   createSingletonShorthands: () => (/* reexport safe */ _shikijs_core__WEBPACK_IMPORTED_MODULE_0__.createSingletonShorthands),
+/* harmony export */   createdBundledHighlighter: () => (/* reexport safe */ _shikijs_core__WEBPACK_IMPORTED_MODULE_0__.createdBundledHighlighter),
 /* harmony export */   getHighlighter: () => (/* binding */ getHighlighter),
-/* harmony export */   getHighlighterCore: () => (/* reexport safe */ _shikijs_core__WEBPACK_IMPORTED_MODULE_2__.getHighlighterCore),
+/* harmony export */   getHighlighterCore: () => (/* reexport safe */ _shikijs_core__WEBPACK_IMPORTED_MODULE_0__.getHighlighterCore),
 /* harmony export */   getLastGrammarState: () => (/* binding */ getLastGrammarState),
-/* harmony export */   getShikiInternal: () => (/* reexport safe */ _shikijs_core__WEBPACK_IMPORTED_MODULE_2__.getShikiInternal),
+/* harmony export */   getShikiInternal: () => (/* reexport safe */ _shikijs_core__WEBPACK_IMPORTED_MODULE_0__.getShikiInternal),
 /* harmony export */   getSingletonHighlighter: () => (/* binding */ getSingletonHighlighter),
-/* harmony export */   getSingletonHighlighterCore: () => (/* reexport safe */ _shikijs_core__WEBPACK_IMPORTED_MODULE_2__.getSingletonHighlighterCore),
-/* harmony export */   getTokenStyleObject: () => (/* reexport safe */ _shikijs_core__WEBPACK_IMPORTED_MODULE_2__.getTokenStyleObject),
-/* harmony export */   getWasmInlined: () => (/* reexport safe */ _chunks_wasm_dynamic_mjs__WEBPACK_IMPORTED_MODULE_4__.g),
-/* harmony export */   hastToHtml: () => (/* reexport safe */ _shikijs_core__WEBPACK_IMPORTED_MODULE_2__.hastToHtml),
-/* harmony export */   isNoneTheme: () => (/* reexport safe */ _shikijs_core__WEBPACK_IMPORTED_MODULE_2__.isNoneTheme),
-/* harmony export */   isPlainLang: () => (/* reexport safe */ _shikijs_core__WEBPACK_IMPORTED_MODULE_2__.isPlainLang),
-/* harmony export */   isSpecialLang: () => (/* reexport safe */ _shikijs_core__WEBPACK_IMPORTED_MODULE_2__.isSpecialLang),
-/* harmony export */   isSpecialTheme: () => (/* reexport safe */ _shikijs_core__WEBPACK_IMPORTED_MODULE_2__.isSpecialTheme),
-/* harmony export */   loadWasm: () => (/* reexport safe */ _shikijs_core__WEBPACK_IMPORTED_MODULE_2__.loadWasm),
-/* harmony export */   makeSingletonHighlighter: () => (/* reexport safe */ _shikijs_core__WEBPACK_IMPORTED_MODULE_2__.makeSingletonHighlighter),
-/* harmony export */   makeSingletonHighlighterCore: () => (/* reexport safe */ _shikijs_core__WEBPACK_IMPORTED_MODULE_2__.makeSingletonHighlighterCore),
-/* harmony export */   normalizeTheme: () => (/* reexport safe */ _shikijs_core__WEBPACK_IMPORTED_MODULE_2__.normalizeTheme),
-/* harmony export */   resolveColorReplacements: () => (/* reexport safe */ _shikijs_core__WEBPACK_IMPORTED_MODULE_2__.resolveColorReplacements),
-/* harmony export */   setDefaultWasmLoader: () => (/* reexport safe */ _shikijs_core__WEBPACK_IMPORTED_MODULE_2__.setDefaultWasmLoader),
-/* harmony export */   splitLines: () => (/* reexport safe */ _shikijs_core__WEBPACK_IMPORTED_MODULE_2__.splitLines),
-/* harmony export */   splitToken: () => (/* reexport safe */ _shikijs_core__WEBPACK_IMPORTED_MODULE_2__.splitToken),
-/* harmony export */   splitTokens: () => (/* reexport safe */ _shikijs_core__WEBPACK_IMPORTED_MODULE_2__.splitTokens),
-/* harmony export */   stringifyTokenStyle: () => (/* reexport safe */ _shikijs_core__WEBPACK_IMPORTED_MODULE_2__.stringifyTokenStyle),
-/* harmony export */   toArray: () => (/* reexport safe */ _shikijs_core__WEBPACK_IMPORTED_MODULE_2__.toArray),
-/* harmony export */   tokenizeAnsiWithTheme: () => (/* reexport safe */ _shikijs_core__WEBPACK_IMPORTED_MODULE_2__.tokenizeAnsiWithTheme),
-/* harmony export */   tokenizeWithTheme: () => (/* reexport safe */ _shikijs_core__WEBPACK_IMPORTED_MODULE_2__.tokenizeWithTheme),
-/* harmony export */   tokensToHast: () => (/* reexport safe */ _shikijs_core__WEBPACK_IMPORTED_MODULE_2__.tokensToHast),
-/* harmony export */   transformerDecorations: () => (/* reexport safe */ _shikijs_core__WEBPACK_IMPORTED_MODULE_2__.transformerDecorations)
+/* harmony export */   getSingletonHighlighterCore: () => (/* reexport safe */ _shikijs_core__WEBPACK_IMPORTED_MODULE_0__.getSingletonHighlighterCore),
+/* harmony export */   getTokenStyleObject: () => (/* reexport safe */ _shikijs_core__WEBPACK_IMPORTED_MODULE_0__.getTokenStyleObject),
+/* harmony export */   getWasmInlined: () => (/* reexport safe */ _chunks_wasm_dynamic_mjs__WEBPACK_IMPORTED_MODULE_3__.g),
+/* harmony export */   hastToHtml: () => (/* reexport safe */ _shikijs_core__WEBPACK_IMPORTED_MODULE_0__.hastToHtml),
+/* harmony export */   isNoneTheme: () => (/* reexport safe */ _shikijs_core__WEBPACK_IMPORTED_MODULE_0__.isNoneTheme),
+/* harmony export */   isPlainLang: () => (/* reexport safe */ _shikijs_core__WEBPACK_IMPORTED_MODULE_0__.isPlainLang),
+/* harmony export */   isSpecialLang: () => (/* reexport safe */ _shikijs_core__WEBPACK_IMPORTED_MODULE_0__.isSpecialLang),
+/* harmony export */   isSpecialTheme: () => (/* reexport safe */ _shikijs_core__WEBPACK_IMPORTED_MODULE_0__.isSpecialTheme),
+/* harmony export */   loadWasm: () => (/* reexport safe */ _shikijs_core__WEBPACK_IMPORTED_MODULE_0__.loadWasm),
+/* harmony export */   makeSingletonHighlighter: () => (/* reexport safe */ _shikijs_core__WEBPACK_IMPORTED_MODULE_0__.makeSingletonHighlighter),
+/* harmony export */   makeSingletonHighlighterCore: () => (/* reexport safe */ _shikijs_core__WEBPACK_IMPORTED_MODULE_0__.makeSingletonHighlighterCore),
+/* harmony export */   normalizeTheme: () => (/* reexport safe */ _shikijs_core__WEBPACK_IMPORTED_MODULE_0__.normalizeTheme),
+/* harmony export */   resolveColorReplacements: () => (/* reexport safe */ _shikijs_core__WEBPACK_IMPORTED_MODULE_0__.resolveColorReplacements),
+/* harmony export */   setDefaultWasmLoader: () => (/* reexport safe */ _shikijs_core__WEBPACK_IMPORTED_MODULE_0__.setDefaultWasmLoader),
+/* harmony export */   splitLines: () => (/* reexport safe */ _shikijs_core__WEBPACK_IMPORTED_MODULE_0__.splitLines),
+/* harmony export */   splitToken: () => (/* reexport safe */ _shikijs_core__WEBPACK_IMPORTED_MODULE_0__.splitToken),
+/* harmony export */   splitTokens: () => (/* reexport safe */ _shikijs_core__WEBPACK_IMPORTED_MODULE_0__.splitTokens),
+/* harmony export */   stringifyTokenStyle: () => (/* reexport safe */ _shikijs_core__WEBPACK_IMPORTED_MODULE_0__.stringifyTokenStyle),
+/* harmony export */   toArray: () => (/* reexport safe */ _shikijs_core__WEBPACK_IMPORTED_MODULE_0__.toArray),
+/* harmony export */   tokenizeAnsiWithTheme: () => (/* reexport safe */ _shikijs_core__WEBPACK_IMPORTED_MODULE_0__.tokenizeAnsiWithTheme),
+/* harmony export */   tokenizeWithTheme: () => (/* reexport safe */ _shikijs_core__WEBPACK_IMPORTED_MODULE_0__.tokenizeWithTheme),
+/* harmony export */   tokensToHast: () => (/* reexport safe */ _shikijs_core__WEBPACK_IMPORTED_MODULE_0__.tokensToHast),
+/* harmony export */   transformerDecorations: () => (/* reexport safe */ _shikijs_core__WEBPACK_IMPORTED_MODULE_0__.transformerDecorations)
 /* harmony export */ });
-/* harmony import */ var _langs_mjs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./langs.mjs */ "./node_modules/shiki/dist/langs.mjs");
-/* harmony import */ var _chunks_wasm_dynamic_mjs__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./chunks/wasm-dynamic.mjs */ "./node_modules/shiki/dist/chunks/wasm-dynamic.mjs");
+/* harmony import */ var _chunks_wasm_dynamic_mjs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./chunks/wasm-dynamic.mjs */ "./node_modules/shiki/dist/chunks/wasm-dynamic.mjs");
+/* harmony import */ var _shikijs_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @shikijs/core */ "./node_modules/@shikijs/core/dist/index.mjs");
 /* harmony import */ var _themes_mjs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./themes.mjs */ "./node_modules/shiki/dist/themes.mjs");
-/* harmony import */ var _shikijs_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @shikijs/core */ "./node_modules/@shikijs/core/dist/index.mjs");
-/* harmony import */ var _theme_css_variables_mjs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./theme-css-variables.mjs */ "./node_modules/shiki/dist/theme-css-variables.mjs");
+/* harmony import */ var _theme_css_variables_mjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./theme-css-variables.mjs */ "./node_modules/shiki/dist/theme-css-variables.mjs");
 
 
 
@@ -10923,81 +10405,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
-
-const createHighlighter = /* @__PURE__ */ (0,_shikijs_core__WEBPACK_IMPORTED_MODULE_2__.createdBundledHighlighter)(
-  _langs_mjs__WEBPACK_IMPORTED_MODULE_0__.bundledLanguages,
-  _themes_mjs__WEBPACK_IMPORTED_MODULE_1__.bundledThemes,
-  _chunks_wasm_dynamic_mjs__WEBPACK_IMPORTED_MODULE_4__.g
-);
-const {
-  codeToHtml,
-  codeToHast,
-  codeToTokens,
-  codeToTokensBase,
-  codeToTokensWithThemes,
-  getSingletonHighlighter,
-  getLastGrammarState
-} = /* @__PURE__ */ (0,_shikijs_core__WEBPACK_IMPORTED_MODULE_2__.createSingletonShorthands)(
-  createHighlighter
-);
-const getHighlighter = (options) => {
-  return createHighlighter(options);
-};
-
-
-
-
-/***/ }),
-
-/***/ "./node_modules/shiki/dist/chunks/wasm-dynamic.mjs":
-/*!*********************************************************!*\
-  !*** ./node_modules/shiki/dist/chunks/wasm-dynamic.mjs ***!
-  \*********************************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   g: () => (/* binding */ getWasmInlined)
-/* harmony export */ });
-const getWasmInlined = async (info) => {
-  return __webpack_require__.e(/*! import() */ "vendors-node_modules_shiki_dist_wasm_mjs").then(__webpack_require__.bind(__webpack_require__, /*! shiki/wasm */ "./node_modules/shiki/dist/wasm.mjs")).then((wasm) => wasm.default(info));
-};
-
-
-
-
-/***/ }),
-
-/***/ "./node_modules/shiki/dist/langs.mjs":
-/*!*******************************************!*\
-  !*** ./node_modules/shiki/dist/langs.mjs ***!
-  \*******************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   bundledLanguages: () => (/* binding */ bundledLanguages),
-/* harmony export */   bundledLanguagesAlias: () => (/* binding */ bundledLanguagesAlias),
-/* harmony export */   bundledLanguagesBase: () => (/* binding */ bundledLanguagesBase),
-/* harmony export */   bundledLanguagesInfo: () => (/* binding */ bundledLanguagesInfo)
-/* harmony export */ });
 const bundledLanguagesInfo = [
-  {
-    "id": "abap",
-    "name": "ABAP",
-    "import": () => __webpack_require__.e(/*! import() */ "vendors-node_modules_shiki_dist_langs_abap_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/abap.mjs */ "./node_modules/shiki/dist/langs/abap.mjs"))
-  },
-  {
-    "id": "actionscript-3",
-    "name": "ActionScript",
-    "import": () => __webpack_require__.e(/*! import() */ "vendors-node_modules_shiki_dist_langs_actionscript-3_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/actionscript-3.mjs */ "./node_modules/shiki/dist/langs/actionscript-3.mjs"))
-  },
-  {
-    "id": "ada",
-    "name": "Ada",
-    "import": () => __webpack_require__.e(/*! import() */ "vendors-node_modules_shiki_dist_langs_ada_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/ada.mjs */ "./node_modules/shiki/dist/langs/ada.mjs"))
-  },
   {
     "id": "angular-html",
     "name": "Angular HTML",
@@ -11009,142 +10417,19 @@ const bundledLanguagesInfo = [
     "import": () => Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_shiki_dist_langs_javascript_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_css_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_html_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_scss_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_angular-html_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_angular-ts_mjs")]).then(__webpack_require__.bind(__webpack_require__, /*! ./langs/angular-ts.mjs */ "./node_modules/shiki/dist/langs/angular-ts.mjs"))
   },
   {
-    "id": "apache",
-    "name": "Apache Conf",
-    "import": () => __webpack_require__.e(/*! import() */ "vendors-node_modules_shiki_dist_langs_apache_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/apache.mjs */ "./node_modules/shiki/dist/langs/apache.mjs"))
-  },
-  {
-    "id": "apex",
-    "name": "Apex",
-    "import": () => __webpack_require__.e(/*! import() */ "vendors-node_modules_shiki_dist_langs_apex_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/apex.mjs */ "./node_modules/shiki/dist/langs/apex.mjs"))
-  },
-  {
-    "id": "apl",
-    "name": "APL",
-    "import": () => Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_shiki_dist_langs_javascript_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_css_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_html_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_java_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_apl_mjs")]).then(__webpack_require__.bind(__webpack_require__, /*! ./langs/apl.mjs */ "./node_modules/shiki/dist/langs/apl.mjs"))
-  },
-  {
-    "id": "applescript",
-    "name": "AppleScript",
-    "import": () => __webpack_require__.e(/*! import() */ "vendors-node_modules_shiki_dist_langs_applescript_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/applescript.mjs */ "./node_modules/shiki/dist/langs/applescript.mjs"))
-  },
-  {
-    "id": "ara",
-    "name": "Ara",
-    "import": () => __webpack_require__.e(/*! import() */ "node_modules_shiki_dist_langs_ara_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/ara.mjs */ "./node_modules/shiki/dist/langs/ara.mjs"))
-  },
-  {
-    "id": "asciidoc",
-    "name": "AsciiDoc",
-    "aliases": [
-      "adoc"
-    ],
-    "import": () => Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_shiki_dist_langs_javascript_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_css_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_html_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_sql_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_java_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_c_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_typescript_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_shellscript_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_scss_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_lua_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_yaml_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_sass_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_less_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_ruby_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_coffee_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_python_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_cpp_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_jsx_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_r_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_csharp_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_go_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_haskell_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_julia_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_scala_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_rust_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_objective-c_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_swift_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_perl_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_erlang_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_groovy_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_elixir_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_ocaml_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_elm_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_asciidoc_mjs")]).then(__webpack_require__.bind(__webpack_require__, /*! ./langs/asciidoc.mjs */ "./node_modules/shiki/dist/langs/asciidoc.mjs"))
-  },
-  {
-    "id": "asm",
-    "name": "Assembly",
-    "import": () => __webpack_require__.e(/*! import() */ "vendors-node_modules_shiki_dist_langs_asm_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/asm.mjs */ "./node_modules/shiki/dist/langs/asm.mjs"))
-  },
-  {
     "id": "astro",
     "name": "Astro",
-    "import": () => Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_shiki_dist_langs_javascript_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_css_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_typescript_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_scss_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_sass_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_less_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_stylus_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_tsx_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_astro_mjs")]).then(__webpack_require__.bind(__webpack_require__, /*! ./langs/astro.mjs */ "./node_modules/shiki/dist/langs/astro.mjs"))
-  },
-  {
-    "id": "awk",
-    "name": "AWK",
-    "import": () => __webpack_require__.e(/*! import() */ "node_modules_shiki_dist_langs_awk_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/awk.mjs */ "./node_modules/shiki/dist/langs/awk.mjs"))
-  },
-  {
-    "id": "ballerina",
-    "name": "Ballerina",
-    "import": () => __webpack_require__.e(/*! import() */ "vendors-node_modules_shiki_dist_langs_ballerina_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/ballerina.mjs */ "./node_modules/shiki/dist/langs/ballerina.mjs"))
-  },
-  {
-    "id": "bat",
-    "name": "Batch File",
-    "aliases": [
-      "batch"
-    ],
-    "import": () => __webpack_require__.e(/*! import() */ "vendors-node_modules_shiki_dist_langs_bat_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/bat.mjs */ "./node_modules/shiki/dist/langs/bat.mjs"))
-  },
-  {
-    "id": "beancount",
-    "name": "Beancount",
-    "import": () => __webpack_require__.e(/*! import() */ "vendors-node_modules_shiki_dist_langs_beancount_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/beancount.mjs */ "./node_modules/shiki/dist/langs/beancount.mjs"))
-  },
-  {
-    "id": "berry",
-    "name": "Berry",
-    "aliases": [
-      "be"
-    ],
-    "import": () => __webpack_require__.e(/*! import() */ "node_modules_shiki_dist_langs_berry_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/berry.mjs */ "./node_modules/shiki/dist/langs/berry.mjs"))
-  },
-  {
-    "id": "bibtex",
-    "name": "BibTeX",
-    "import": () => __webpack_require__.e(/*! import() */ "node_modules_shiki_dist_langs_bibtex_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/bibtex.mjs */ "./node_modules/shiki/dist/langs/bibtex.mjs"))
-  },
-  {
-    "id": "bicep",
-    "name": "Bicep",
-    "import": () => __webpack_require__.e(/*! import() */ "node_modules_shiki_dist_langs_bicep_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/bicep.mjs */ "./node_modules/shiki/dist/langs/bicep.mjs"))
+    "import": () => Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_shiki_dist_langs_javascript_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_css_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_typescript_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_scss_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_sass_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_tsx_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_less_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_stylus_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_astro_mjs")]).then(__webpack_require__.bind(__webpack_require__, /*! ./langs/astro.mjs */ "./node_modules/shiki/dist/langs/astro.mjs"))
   },
   {
     "id": "blade",
     "name": "Blade",
-    "import": () => Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_shiki_dist_langs_javascript_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_css_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_html_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_sql_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_java_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_blade_mjs")]).then(__webpack_require__.bind(__webpack_require__, /*! ./langs/blade.mjs */ "./node_modules/shiki/dist/langs/blade.mjs"))
+    "import": () => Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_shiki_dist_langs_javascript_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_css_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_html_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_java_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_sql_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_blade_mjs")]).then(__webpack_require__.bind(__webpack_require__, /*! ./langs/blade.mjs */ "./node_modules/shiki/dist/langs/blade.mjs"))
   },
   {
     "id": "c",
     "name": "C",
     "import": () => __webpack_require__.e(/*! import() */ "vendors-node_modules_shiki_dist_langs_c_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/c.mjs */ "./node_modules/shiki/dist/langs/c.mjs"))
-  },
-  {
-    "id": "cadence",
-    "name": "Cadence",
-    "aliases": [
-      "cdc"
-    ],
-    "import": () => __webpack_require__.e(/*! import() */ "vendors-node_modules_shiki_dist_langs_cadence_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/cadence.mjs */ "./node_modules/shiki/dist/langs/cadence.mjs"))
-  },
-  {
-    "id": "clarity",
-    "name": "Clarity",
-    "import": () => __webpack_require__.e(/*! import() */ "vendors-node_modules_shiki_dist_langs_clarity_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/clarity.mjs */ "./node_modules/shiki/dist/langs/clarity.mjs"))
-  },
-  {
-    "id": "clojure",
-    "name": "Clojure",
-    "aliases": [
-      "clj"
-    ],
-    "import": () => __webpack_require__.e(/*! import() */ "node_modules_shiki_dist_langs_clojure_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/clojure.mjs */ "./node_modules/shiki/dist/langs/clojure.mjs"))
-  },
-  {
-    "id": "cmake",
-    "name": "CMake",
-    "import": () => __webpack_require__.e(/*! import() */ "vendors-node_modules_shiki_dist_langs_cmake_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/cmake.mjs */ "./node_modules/shiki/dist/langs/cmake.mjs"))
-  },
-  {
-    "id": "cobol",
-    "name": "COBOL",
-    "import": () => Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_shiki_dist_langs_javascript_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_css_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_html_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_sql_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_java_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_cobol_mjs")]).then(__webpack_require__.bind(__webpack_require__, /*! ./langs/cobol.mjs */ "./node_modules/shiki/dist/langs/cobol.mjs"))
-  },
-  {
-    "id": "codeowners",
-    "name": "CODEOWNERS",
-    "import": () => __webpack_require__.e(/*! import() */ "node_modules_shiki_dist_langs_codeowners_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/codeowners.mjs */ "./node_modules/shiki/dist/langs/codeowners.mjs"))
-  },
-  {
-    "id": "codeql",
-    "name": "CodeQL",
-    "aliases": [
-      "ql"
-    ],
-    "import": () => __webpack_require__.e(/*! import() */ "vendors-node_modules_shiki_dist_langs_codeql_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/codeql.mjs */ "./node_modules/shiki/dist/langs/codeql.mjs"))
   },
   {
     "id": "coffee",
@@ -11155,39 +10440,12 @@ const bundledLanguagesInfo = [
     "import": () => Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_shiki_dist_langs_javascript_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_coffee_mjs")]).then(__webpack_require__.bind(__webpack_require__, /*! ./langs/coffee.mjs */ "./node_modules/shiki/dist/langs/coffee.mjs"))
   },
   {
-    "id": "common-lisp",
-    "name": "Common Lisp",
-    "aliases": [
-      "lisp"
-    ],
-    "import": () => __webpack_require__.e(/*! import() */ "vendors-node_modules_shiki_dist_langs_common-lisp_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/common-lisp.mjs */ "./node_modules/shiki/dist/langs/common-lisp.mjs"))
-  },
-  {
-    "id": "coq",
-    "name": "Coq",
-    "import": () => __webpack_require__.e(/*! import() */ "node_modules_shiki_dist_langs_coq_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/coq.mjs */ "./node_modules/shiki/dist/langs/coq.mjs"))
-  },
-  {
     "id": "cpp",
     "name": "C++",
     "aliases": [
       "c++"
     ],
-    "import": () => Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_shiki_dist_langs_sql_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_c_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_cpp_mjs")]).then(__webpack_require__.bind(__webpack_require__, /*! ./langs/cpp.mjs */ "./node_modules/shiki/dist/langs/cpp.mjs"))
-  },
-  {
-    "id": "crystal",
-    "name": "Crystal",
-    "import": () => Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_shiki_dist_langs_javascript_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_css_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_html_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_sql_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_c_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_shellscript_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_crystal_mjs")]).then(__webpack_require__.bind(__webpack_require__, /*! ./langs/crystal.mjs */ "./node_modules/shiki/dist/langs/crystal.mjs"))
-  },
-  {
-    "id": "csharp",
-    "name": "C#",
-    "aliases": [
-      "c#",
-      "cs"
-    ],
-    "import": () => __webpack_require__.e(/*! import() */ "vendors-node_modules_shiki_dist_langs_csharp_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/csharp.mjs */ "./node_modules/shiki/dist/langs/csharp.mjs"))
+    "import": () => Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_shiki_dist_langs_c_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_sql_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_cpp_mjs")]).then(__webpack_require__.bind(__webpack_require__, /*! ./langs/cpp.mjs */ "./node_modules/shiki/dist/langs/cpp.mjs"))
   },
   {
     "id": "css",
@@ -11195,221 +10453,9 @@ const bundledLanguagesInfo = [
     "import": () => __webpack_require__.e(/*! import() */ "vendors-node_modules_shiki_dist_langs_css_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/css.mjs */ "./node_modules/shiki/dist/langs/css.mjs"))
   },
   {
-    "id": "csv",
-    "name": "CSV",
-    "import": () => __webpack_require__.e(/*! import() */ "node_modules_shiki_dist_langs_csv_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/csv.mjs */ "./node_modules/shiki/dist/langs/csv.mjs"))
-  },
-  {
-    "id": "cue",
-    "name": "CUE",
-    "import": () => __webpack_require__.e(/*! import() */ "vendors-node_modules_shiki_dist_langs_cue_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/cue.mjs */ "./node_modules/shiki/dist/langs/cue.mjs"))
-  },
-  {
-    "id": "cypher",
-    "name": "Cypher",
-    "aliases": [
-      "cql"
-    ],
-    "import": () => __webpack_require__.e(/*! import() */ "node_modules_shiki_dist_langs_cypher_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/cypher.mjs */ "./node_modules/shiki/dist/langs/cypher.mjs"))
-  },
-  {
-    "id": "d",
-    "name": "D",
-    "import": () => __webpack_require__.e(/*! import() */ "vendors-node_modules_shiki_dist_langs_d_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/d.mjs */ "./node_modules/shiki/dist/langs/d.mjs"))
-  },
-  {
-    "id": "dart",
-    "name": "Dart",
-    "import": () => __webpack_require__.e(/*! import() */ "node_modules_shiki_dist_langs_dart_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/dart.mjs */ "./node_modules/shiki/dist/langs/dart.mjs"))
-  },
-  {
-    "id": "dax",
-    "name": "DAX",
-    "import": () => __webpack_require__.e(/*! import() */ "node_modules_shiki_dist_langs_dax_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/dax.mjs */ "./node_modules/shiki/dist/langs/dax.mjs"))
-  },
-  {
-    "id": "desktop",
-    "name": "Desktop",
-    "import": () => __webpack_require__.e(/*! import() */ "node_modules_shiki_dist_langs_desktop_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/desktop.mjs */ "./node_modules/shiki/dist/langs/desktop.mjs"))
-  },
-  {
-    "id": "diff",
-    "name": "Diff",
-    "import": () => __webpack_require__.e(/*! import() */ "node_modules_shiki_dist_langs_diff_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/diff.mjs */ "./node_modules/shiki/dist/langs/diff.mjs"))
-  },
-  {
-    "id": "docker",
-    "name": "Dockerfile",
-    "aliases": [
-      "dockerfile"
-    ],
-    "import": () => __webpack_require__.e(/*! import() */ "node_modules_shiki_dist_langs_docker_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/docker.mjs */ "./node_modules/shiki/dist/langs/docker.mjs"))
-  },
-  {
-    "id": "dotenv",
-    "name": "dotEnv",
-    "import": () => __webpack_require__.e(/*! import() */ "node_modules_shiki_dist_langs_dotenv_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/dotenv.mjs */ "./node_modules/shiki/dist/langs/dotenv.mjs"))
-  },
-  {
-    "id": "dream-maker",
-    "name": "Dream Maker",
-    "import": () => __webpack_require__.e(/*! import() */ "vendors-node_modules_shiki_dist_langs_dream-maker_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/dream-maker.mjs */ "./node_modules/shiki/dist/langs/dream-maker.mjs"))
-  },
-  {
-    "id": "edge",
-    "name": "Edge",
-    "import": () => Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_shiki_dist_langs_javascript_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_css_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_html_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_typescript_mjs"), __webpack_require__.e("node_modules_shiki_dist_langs_edge_mjs")]).then(__webpack_require__.bind(__webpack_require__, /*! ./langs/edge.mjs */ "./node_modules/shiki/dist/langs/edge.mjs"))
-  },
-  {
-    "id": "elixir",
-    "name": "Elixir",
-    "import": () => Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_shiki_dist_langs_javascript_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_css_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_html_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_elixir_mjs")]).then(__webpack_require__.bind(__webpack_require__, /*! ./langs/elixir.mjs */ "./node_modules/shiki/dist/langs/elixir.mjs"))
-  },
-  {
-    "id": "elm",
-    "name": "Elm",
-    "import": () => Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_shiki_dist_langs_c_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_elm_mjs"), __webpack_require__.e("node_modules_shiki_dist_langs_glsl_mjs-_8bd00")]).then(__webpack_require__.bind(__webpack_require__, /*! ./langs/elm.mjs */ "./node_modules/shiki/dist/langs/elm.mjs"))
-  },
-  {
-    "id": "emacs-lisp",
-    "name": "Emacs Lisp",
-    "aliases": [
-      "elisp"
-    ],
-    "import": () => __webpack_require__.e(/*! import() */ "vendors-node_modules_shiki_dist_langs_emacs-lisp_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/emacs-lisp.mjs */ "./node_modules/shiki/dist/langs/emacs-lisp.mjs"))
-  },
-  {
-    "id": "erb",
-    "name": "ERB",
-    "import": () => Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_shiki_dist_langs_javascript_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_css_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_html_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_sql_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_java_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_c_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_shellscript_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_lua_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_ruby_mjs"), __webpack_require__.e("node_modules_shiki_dist_langs_erb_mjs")]).then(__webpack_require__.bind(__webpack_require__, /*! ./langs/erb.mjs */ "./node_modules/shiki/dist/langs/erb.mjs"))
-  },
-  {
-    "id": "erlang",
-    "name": "Erlang",
-    "aliases": [
-      "erl"
-    ],
-    "import": () => __webpack_require__.e(/*! import() */ "vendors-node_modules_shiki_dist_langs_erlang_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/erlang.mjs */ "./node_modules/shiki/dist/langs/erlang.mjs"))
-  },
-  {
-    "id": "fennel",
-    "name": "Fennel",
-    "import": () => __webpack_require__.e(/*! import() */ "node_modules_shiki_dist_langs_fennel_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/fennel.mjs */ "./node_modules/shiki/dist/langs/fennel.mjs"))
-  },
-  {
-    "id": "fish",
-    "name": "Fish",
-    "import": () => __webpack_require__.e(/*! import() */ "node_modules_shiki_dist_langs_fish_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/fish.mjs */ "./node_modules/shiki/dist/langs/fish.mjs"))
-  },
-  {
-    "id": "fluent",
-    "name": "Fluent",
-    "aliases": [
-      "ftl"
-    ],
-    "import": () => __webpack_require__.e(/*! import() */ "node_modules_shiki_dist_langs_fluent_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/fluent.mjs */ "./node_modules/shiki/dist/langs/fluent.mjs"))
-  },
-  {
-    "id": "fortran-fixed-form",
-    "name": "Fortran (Fixed Form)",
-    "aliases": [
-      "f",
-      "for",
-      "f77"
-    ],
-    "import": () => Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_shiki_dist_langs_fortran-free-form_mjs"), __webpack_require__.e("node_modules_shiki_dist_langs_fortran-fixed-form_mjs")]).then(__webpack_require__.bind(__webpack_require__, /*! ./langs/fortran-fixed-form.mjs */ "./node_modules/shiki/dist/langs/fortran-fixed-form.mjs"))
-  },
-  {
-    "id": "fortran-free-form",
-    "name": "Fortran (Free Form)",
-    "aliases": [
-      "f90",
-      "f95",
-      "f03",
-      "f08",
-      "f18"
-    ],
-    "import": () => __webpack_require__.e(/*! import() */ "vendors-node_modules_shiki_dist_langs_fortran-free-form_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/fortran-free-form.mjs */ "./node_modules/shiki/dist/langs/fortran-free-form.mjs"))
-  },
-  {
-    "id": "fsharp",
-    "name": "F#",
-    "aliases": [
-      "f#",
-      "fs"
-    ],
-    "import": () => Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_shiki_dist_langs_markdown_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_fsharp_mjs")]).then(__webpack_require__.bind(__webpack_require__, /*! ./langs/fsharp.mjs */ "./node_modules/shiki/dist/langs/fsharp.mjs"))
-  },
-  {
-    "id": "gdresource",
-    "name": "GDResource",
-    "import": () => Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_shiki_dist_langs_gdscript_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_gdresource_mjs")]).then(__webpack_require__.bind(__webpack_require__, /*! ./langs/gdresource.mjs */ "./node_modules/shiki/dist/langs/gdresource.mjs"))
-  },
-  {
-    "id": "gdscript",
-    "name": "GDScript",
-    "import": () => __webpack_require__.e(/*! import() */ "vendors-node_modules_shiki_dist_langs_gdscript_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/gdscript.mjs */ "./node_modules/shiki/dist/langs/gdscript.mjs"))
-  },
-  {
-    "id": "gdshader",
-    "name": "GDShader",
-    "import": () => __webpack_require__.e(/*! import() */ "node_modules_shiki_dist_langs_gdshader_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/gdshader.mjs */ "./node_modules/shiki/dist/langs/gdshader.mjs"))
-  },
-  {
-    "id": "genie",
-    "name": "Genie",
-    "import": () => __webpack_require__.e(/*! import() */ "node_modules_shiki_dist_langs_genie_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/genie.mjs */ "./node_modules/shiki/dist/langs/genie.mjs"))
-  },
-  {
-    "id": "gherkin",
-    "name": "Gherkin",
-    "import": () => __webpack_require__.e(/*! import() */ "vendors-node_modules_shiki_dist_langs_gherkin_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/gherkin.mjs */ "./node_modules/shiki/dist/langs/gherkin.mjs"))
-  },
-  {
-    "id": "git-commit",
-    "name": "Git Commit Message",
-    "import": () => __webpack_require__.e(/*! import() */ "node_modules_shiki_dist_langs_git-commit_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/git-commit.mjs */ "./node_modules/shiki/dist/langs/git-commit.mjs"))
-  },
-  {
-    "id": "git-rebase",
-    "name": "Git Rebase Message",
-    "import": () => Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_shiki_dist_langs_shellscript_mjs"), __webpack_require__.e("node_modules_shiki_dist_langs_git-rebase_mjs")]).then(__webpack_require__.bind(__webpack_require__, /*! ./langs/git-rebase.mjs */ "./node_modules/shiki/dist/langs/git-rebase.mjs"))
-  },
-  {
-    "id": "gleam",
-    "name": "Gleam",
-    "import": () => __webpack_require__.e(/*! import() */ "node_modules_shiki_dist_langs_gleam_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/gleam.mjs */ "./node_modules/shiki/dist/langs/gleam.mjs"))
-  },
-  {
-    "id": "glimmer-js",
-    "name": "Glimmer JS",
-    "aliases": [
-      "gjs"
-    ],
-    "import": () => Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_shiki_dist_langs_javascript_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_css_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_html_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_typescript_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_glimmer-js_mjs")]).then(__webpack_require__.bind(__webpack_require__, /*! ./langs/glimmer-js.mjs */ "./node_modules/shiki/dist/langs/glimmer-js.mjs"))
-  },
-  {
-    "id": "glimmer-ts",
-    "name": "Glimmer TS",
-    "aliases": [
-      "gts"
-    ],
-    "import": () => Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_shiki_dist_langs_javascript_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_css_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_html_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_typescript_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_glimmer-ts_mjs")]).then(__webpack_require__.bind(__webpack_require__, /*! ./langs/glimmer-ts.mjs */ "./node_modules/shiki/dist/langs/glimmer-ts.mjs"))
-  },
-  {
     "id": "glsl",
     "name": "GLSL",
-    "import": () => Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_shiki_dist_langs_c_mjs"), __webpack_require__.e("node_modules_shiki_dist_langs_glsl_mjs-_8bd01")]).then(__webpack_require__.bind(__webpack_require__, /*! ./langs/glsl.mjs */ "./node_modules/shiki/dist/langs/glsl.mjs"))
-  },
-  {
-    "id": "gnuplot",
-    "name": "Gnuplot",
-    "import": () => __webpack_require__.e(/*! import() */ "vendors-node_modules_shiki_dist_langs_gnuplot_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/gnuplot.mjs */ "./node_modules/shiki/dist/langs/gnuplot.mjs"))
-  },
-  {
-    "id": "go",
-    "name": "Go",
-    "import": () => __webpack_require__.e(/*! import() */ "vendors-node_modules_shiki_dist_langs_go_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/go.mjs */ "./node_modules/shiki/dist/langs/go.mjs"))
+    "import": () => Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_shiki_dist_langs_c_mjs"), __webpack_require__.e("node_modules_shiki_dist_langs_glsl_mjs")]).then(__webpack_require__.bind(__webpack_require__, /*! ./langs/glsl.mjs */ "./node_modules/shiki/dist/langs/glsl.mjs"))
   },
   {
     "id": "graphql",
@@ -11417,22 +10463,12 @@ const bundledLanguagesInfo = [
     "aliases": [
       "gql"
     ],
-    "import": () => Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_shiki_dist_langs_javascript_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_typescript_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_jsx_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_tsx_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_graphql_mjs")]).then(__webpack_require__.bind(__webpack_require__, /*! ./langs/graphql.mjs */ "./node_modules/shiki/dist/langs/graphql.mjs"))
-  },
-  {
-    "id": "groovy",
-    "name": "Groovy",
-    "import": () => __webpack_require__.e(/*! import() */ "vendors-node_modules_shiki_dist_langs_groovy_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/groovy.mjs */ "./node_modules/shiki/dist/langs/groovy.mjs"))
-  },
-  {
-    "id": "hack",
-    "name": "Hack",
-    "import": () => Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_shiki_dist_langs_javascript_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_css_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_html_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_sql_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_hack_mjs")]).then(__webpack_require__.bind(__webpack_require__, /*! ./langs/hack.mjs */ "./node_modules/shiki/dist/langs/hack.mjs"))
+    "import": () => Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_shiki_dist_langs_javascript_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_typescript_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_tsx_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_jsx_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_graphql_mjs")]).then(__webpack_require__.bind(__webpack_require__, /*! ./langs/graphql.mjs */ "./node_modules/shiki/dist/langs/graphql.mjs"))
   },
   {
     "id": "haml",
     "name": "Ruby Haml",
-    "import": () => Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_shiki_dist_langs_javascript_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_css_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_html_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_sql_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_java_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_c_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_shellscript_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_lua_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_markdown_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_sass_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_ruby_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_coffee_mjs"), __webpack_require__.e("node_modules_shiki_dist_langs_haml_mjs")]).then(__webpack_require__.bind(__webpack_require__, /*! ./langs/haml.mjs */ "./node_modules/shiki/dist/langs/haml.mjs"))
+    "import": () => Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_shiki_dist_langs_javascript_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_css_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_html_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_c_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_java_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_sql_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_sass_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_markdown_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_coffee_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_shellscript_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_lua_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_ruby_mjs"), __webpack_require__.e("node_modules_shiki_dist_langs_haml_mjs")]).then(__webpack_require__.bind(__webpack_require__, /*! ./langs/haml.mjs */ "./node_modules/shiki/dist/langs/haml.mjs"))
   },
   {
     "id": "handlebars",
@@ -11441,34 +10477,6 @@ const bundledLanguagesInfo = [
       "hbs"
     ],
     "import": () => Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_shiki_dist_langs_javascript_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_css_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_html_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_yaml_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_handlebars_mjs")]).then(__webpack_require__.bind(__webpack_require__, /*! ./langs/handlebars.mjs */ "./node_modules/shiki/dist/langs/handlebars.mjs"))
-  },
-  {
-    "id": "haskell",
-    "name": "Haskell",
-    "aliases": [
-      "hs"
-    ],
-    "import": () => __webpack_require__.e(/*! import() */ "vendors-node_modules_shiki_dist_langs_haskell_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/haskell.mjs */ "./node_modules/shiki/dist/langs/haskell.mjs"))
-  },
-  {
-    "id": "haxe",
-    "name": "Haxe",
-    "import": () => __webpack_require__.e(/*! import() */ "vendors-node_modules_shiki_dist_langs_haxe_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/haxe.mjs */ "./node_modules/shiki/dist/langs/haxe.mjs"))
-  },
-  {
-    "id": "hcl",
-    "name": "HashiCorp HCL",
-    "import": () => __webpack_require__.e(/*! import() */ "vendors-node_modules_shiki_dist_langs_hcl_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/hcl.mjs */ "./node_modules/shiki/dist/langs/hcl.mjs"))
-  },
-  {
-    "id": "hjson",
-    "name": "Hjson",
-    "import": () => __webpack_require__.e(/*! import() */ "vendors-node_modules_shiki_dist_langs_hjson_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/hjson.mjs */ "./node_modules/shiki/dist/langs/hjson.mjs"))
-  },
-  {
-    "id": "hlsl",
-    "name": "HLSL",
-    "import": () => __webpack_require__.e(/*! import() */ "node_modules_shiki_dist_langs_hlsl_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/hlsl.mjs */ "./node_modules/shiki/dist/langs/hlsl.mjs"))
   },
   {
     "id": "html",
@@ -11483,30 +10491,12 @@ const bundledLanguagesInfo = [
   {
     "id": "http",
     "name": "HTTP",
-    "import": () => Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_shiki_dist_langs_javascript_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_java_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_typescript_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_shellscript_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_jsx_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_tsx_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_graphql_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_http_mjs")]).then(__webpack_require__.bind(__webpack_require__, /*! ./langs/http.mjs */ "./node_modules/shiki/dist/langs/http.mjs"))
-  },
-  {
-    "id": "hxml",
-    "name": "HXML",
-    "import": () => Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_shiki_dist_langs_haxe_mjs"), __webpack_require__.e("node_modules_shiki_dist_langs_hxml_mjs")]).then(__webpack_require__.bind(__webpack_require__, /*! ./langs/hxml.mjs */ "./node_modules/shiki/dist/langs/hxml.mjs"))
-  },
-  {
-    "id": "hy",
-    "name": "Hy",
-    "import": () => __webpack_require__.e(/*! import() */ "node_modules_shiki_dist_langs_hy_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/hy.mjs */ "./node_modules/shiki/dist/langs/hy.mjs"))
+    "import": () => Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_shiki_dist_langs_javascript_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_typescript_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_java_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_tsx_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_jsx_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_shellscript_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_graphql_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_http_mjs")]).then(__webpack_require__.bind(__webpack_require__, /*! ./langs/http.mjs */ "./node_modules/shiki/dist/langs/http.mjs"))
   },
   {
     "id": "imba",
     "name": "Imba",
     "import": () => Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_shiki_dist_langs_typescript_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_imba_mjs")]).then(__webpack_require__.bind(__webpack_require__, /*! ./langs/imba.mjs */ "./node_modules/shiki/dist/langs/imba.mjs"))
-  },
-  {
-    "id": "ini",
-    "name": "INI",
-    "aliases": [
-      "properties"
-    ],
-    "import": () => __webpack_require__.e(/*! import() */ "node_modules_shiki_dist_langs_ini_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/ini.mjs */ "./node_modules/shiki/dist/langs/ini.mjs"))
   },
   {
     "id": "java",
@@ -11552,19 +10542,6 @@ const bundledLanguagesInfo = [
     "import": () => __webpack_require__.e(/*! import() */ "node_modules_shiki_dist_langs_jsonl_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/jsonl.mjs */ "./node_modules/shiki/dist/langs/jsonl.mjs"))
   },
   {
-    "id": "jsonnet",
-    "name": "Jsonnet",
-    "import": () => __webpack_require__.e(/*! import() */ "node_modules_shiki_dist_langs_jsonnet_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/jsonnet.mjs */ "./node_modules/shiki/dist/langs/jsonnet.mjs"))
-  },
-  {
-    "id": "jssm",
-    "name": "JSSM",
-    "aliases": [
-      "fsl"
-    ],
-    "import": () => __webpack_require__.e(/*! import() */ "node_modules_shiki_dist_langs_jssm_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/jssm.mjs */ "./node_modules/shiki/dist/langs/jssm.mjs"))
-  },
-  {
     "id": "jsx",
     "name": "JSX",
     "import": () => __webpack_require__.e(/*! import() */ "vendors-node_modules_shiki_dist_langs_jsx_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/jsx.mjs */ "./node_modules/shiki/dist/langs/jsx.mjs"))
@@ -11575,37 +10552,7 @@ const bundledLanguagesInfo = [
     "aliases": [
       "jl"
     ],
-    "import": () => Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_shiki_dist_langs_javascript_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_sql_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_c_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_python_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_cpp_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_r_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_julia_mjs")]).then(__webpack_require__.bind(__webpack_require__, /*! ./langs/julia.mjs */ "./node_modules/shiki/dist/langs/julia.mjs"))
-  },
-  {
-    "id": "kotlin",
-    "name": "Kotlin",
-    "aliases": [
-      "kt",
-      "kts"
-    ],
-    "import": () => __webpack_require__.e(/*! import() */ "node_modules_shiki_dist_langs_kotlin_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/kotlin.mjs */ "./node_modules/shiki/dist/langs/kotlin.mjs"))
-  },
-  {
-    "id": "kusto",
-    "name": "Kusto",
-    "aliases": [
-      "kql"
-    ],
-    "import": () => __webpack_require__.e(/*! import() */ "vendors-node_modules_shiki_dist_langs_kusto_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/kusto.mjs */ "./node_modules/shiki/dist/langs/kusto.mjs"))
-  },
-  {
-    "id": "latex",
-    "name": "LaTeX",
-    "import": () => Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_shiki_dist_langs_javascript_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_css_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_html_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_sql_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_java_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_c_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_typescript_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_shellscript_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_lua_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_yaml_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_ruby_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_python_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_cpp_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_r_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_haskell_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_julia_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_scala_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_rust_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_gnuplot_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_latex_mjs")]).then(__webpack_require__.bind(__webpack_require__, /*! ./langs/latex.mjs */ "./node_modules/shiki/dist/langs/latex.mjs"))
-  },
-  {
-    "id": "lean",
-    "name": "Lean 4",
-    "aliases": [
-      "lean4"
-    ],
-    "import": () => __webpack_require__.e(/*! import() */ "node_modules_shiki_dist_langs_lean_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/lean.mjs */ "./node_modules/shiki/dist/langs/lean.mjs"))
+    "import": () => Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_shiki_dist_langs_javascript_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_c_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_sql_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_cpp_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_python_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_r_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_julia_mjs")]).then(__webpack_require__.bind(__webpack_require__, /*! ./langs/julia.mjs */ "./node_modules/shiki/dist/langs/julia.mjs"))
   },
   {
     "id": "less",
@@ -11613,37 +10560,9 @@ const bundledLanguagesInfo = [
     "import": () => __webpack_require__.e(/*! import() */ "vendors-node_modules_shiki_dist_langs_less_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/less.mjs */ "./node_modules/shiki/dist/langs/less.mjs"))
   },
   {
-    "id": "liquid",
-    "name": "Liquid",
-    "import": () => Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_shiki_dist_langs_javascript_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_css_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_html_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_liquid_mjs")]).then(__webpack_require__.bind(__webpack_require__, /*! ./langs/liquid.mjs */ "./node_modules/shiki/dist/langs/liquid.mjs"))
-  },
-  {
-    "id": "log",
-    "name": "Log file",
-    "import": () => __webpack_require__.e(/*! import() */ "node_modules_shiki_dist_langs_log_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/log.mjs */ "./node_modules/shiki/dist/langs/log.mjs"))
-  },
-  {
-    "id": "logo",
-    "name": "Logo",
-    "import": () => __webpack_require__.e(/*! import() */ "node_modules_shiki_dist_langs_logo_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/logo.mjs */ "./node_modules/shiki/dist/langs/logo.mjs"))
-  },
-  {
     "id": "lua",
     "name": "Lua",
     "import": () => Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_shiki_dist_langs_c_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_lua_mjs")]).then(__webpack_require__.bind(__webpack_require__, /*! ./langs/lua.mjs */ "./node_modules/shiki/dist/langs/lua.mjs"))
-  },
-  {
-    "id": "luau",
-    "name": "Luau",
-    "import": () => __webpack_require__.e(/*! import() */ "vendors-node_modules_shiki_dist_langs_luau_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/luau.mjs */ "./node_modules/shiki/dist/langs/luau.mjs"))
-  },
-  {
-    "id": "make",
-    "name": "Makefile",
-    "aliases": [
-      "makefile"
-    ],
-    "import": () => __webpack_require__.e(/*! import() */ "node_modules_shiki_dist_langs_make_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/make.mjs */ "./node_modules/shiki/dist/langs/make.mjs"))
   },
   {
     "id": "markdown",
@@ -11659,11 +10578,6 @@ const bundledLanguagesInfo = [
     "import": () => Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_shiki_dist_langs_javascript_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_css_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_scss_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_less_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_marko_mjs")]).then(__webpack_require__.bind(__webpack_require__, /*! ./langs/marko.mjs */ "./node_modules/shiki/dist/langs/marko.mjs"))
   },
   {
-    "id": "matlab",
-    "name": "MATLAB",
-    "import": () => __webpack_require__.e(/*! import() */ "vendors-node_modules_shiki_dist_langs_matlab_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/matlab.mjs */ "./node_modules/shiki/dist/langs/matlab.mjs"))
-  },
-  {
     "id": "mdc",
     "name": "MDC",
     "import": () => Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_shiki_dist_langs_javascript_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_css_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_html_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_markdown_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_yaml_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_mdc_mjs")]).then(__webpack_require__.bind(__webpack_require__, /*! ./langs/mdc.mjs */ "./node_modules/shiki/dist/langs/mdc.mjs"))
@@ -11674,105 +10588,9 @@ const bundledLanguagesInfo = [
     "import": () => __webpack_require__.e(/*! import() */ "vendors-node_modules_shiki_dist_langs_mdx_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/mdx.mjs */ "./node_modules/shiki/dist/langs/mdx.mjs"))
   },
   {
-    "id": "mermaid",
-    "name": "Mermaid",
-    "import": () => __webpack_require__.e(/*! import() */ "vendors-node_modules_shiki_dist_langs_mermaid_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/mermaid.mjs */ "./node_modules/shiki/dist/langs/mermaid.mjs"))
-  },
-  {
-    "id": "mojo",
-    "name": "Mojo",
-    "import": () => __webpack_require__.e(/*! import() */ "vendors-node_modules_shiki_dist_langs_mojo_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/mojo.mjs */ "./node_modules/shiki/dist/langs/mojo.mjs"))
-  },
-  {
-    "id": "move",
-    "name": "Move",
-    "import": () => __webpack_require__.e(/*! import() */ "vendors-node_modules_shiki_dist_langs_move_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/move.mjs */ "./node_modules/shiki/dist/langs/move.mjs"))
-  },
-  {
-    "id": "narrat",
-    "name": "Narrat Language",
-    "aliases": [
-      "nar"
-    ],
-    "import": () => __webpack_require__.e(/*! import() */ "node_modules_shiki_dist_langs_narrat_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/narrat.mjs */ "./node_modules/shiki/dist/langs/narrat.mjs"))
-  },
-  {
-    "id": "nextflow",
-    "name": "Nextflow",
-    "aliases": [
-      "nf"
-    ],
-    "import": () => __webpack_require__.e(/*! import() */ "node_modules_shiki_dist_langs_nextflow_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/nextflow.mjs */ "./node_modules/shiki/dist/langs/nextflow.mjs"))
-  },
-  {
-    "id": "nginx",
-    "name": "Nginx",
-    "import": () => Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_shiki_dist_langs_c_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_lua_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_nginx_mjs")]).then(__webpack_require__.bind(__webpack_require__, /*! ./langs/nginx.mjs */ "./node_modules/shiki/dist/langs/nginx.mjs"))
-  },
-  {
-    "id": "nim",
-    "name": "Nim",
-    "import": () => Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_shiki_dist_langs_javascript_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_css_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_html_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_java_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_c_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_markdown_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_nim_mjs")]).then(__webpack_require__.bind(__webpack_require__, /*! ./langs/nim.mjs */ "./node_modules/shiki/dist/langs/nim.mjs"))
-  },
-  {
-    "id": "nix",
-    "name": "Nix",
-    "import": () => __webpack_require__.e(/*! import() */ "vendors-node_modules_shiki_dist_langs_nix_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/nix.mjs */ "./node_modules/shiki/dist/langs/nix.mjs"))
-  },
-  {
-    "id": "nushell",
-    "name": "nushell",
-    "aliases": [
-      "nu"
-    ],
-    "import": () => __webpack_require__.e(/*! import() */ "vendors-node_modules_shiki_dist_langs_nushell_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/nushell.mjs */ "./node_modules/shiki/dist/langs/nushell.mjs"))
-  },
-  {
-    "id": "objective-c",
-    "name": "Objective-C",
-    "aliases": [
-      "objc"
-    ],
-    "import": () => __webpack_require__.e(/*! import() */ "vendors-node_modules_shiki_dist_langs_objective-c_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/objective-c.mjs */ "./node_modules/shiki/dist/langs/objective-c.mjs"))
-  },
-  {
-    "id": "objective-cpp",
-    "name": "Objective-C++",
-    "import": () => __webpack_require__.e(/*! import() */ "vendors-node_modules_shiki_dist_langs_objective-cpp_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/objective-cpp.mjs */ "./node_modules/shiki/dist/langs/objective-cpp.mjs"))
-  },
-  {
-    "id": "ocaml",
-    "name": "OCaml",
-    "import": () => __webpack_require__.e(/*! import() */ "vendors-node_modules_shiki_dist_langs_ocaml_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/ocaml.mjs */ "./node_modules/shiki/dist/langs/ocaml.mjs"))
-  },
-  {
-    "id": "pascal",
-    "name": "Pascal",
-    "import": () => __webpack_require__.e(/*! import() */ "node_modules_shiki_dist_langs_pascal_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/pascal.mjs */ "./node_modules/shiki/dist/langs/pascal.mjs"))
-  },
-  {
-    "id": "perl",
-    "name": "Perl",
-    "import": () => Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_shiki_dist_langs_javascript_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_css_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_html_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_sql_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_java_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_perl_mjs"), __webpack_require__.e("node_modules_shiki_dist_langs_xml_mjs-_97830")]).then(__webpack_require__.bind(__webpack_require__, /*! ./langs/perl.mjs */ "./node_modules/shiki/dist/langs/perl.mjs"))
-  },
-  {
     "id": "php",
     "name": "PHP",
-    "import": () => Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_shiki_dist_langs_javascript_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_css_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_html_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_sql_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_java_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_php_mjs"), __webpack_require__.e("node_modules_shiki_dist_langs_xml_mjs-_97831")]).then(__webpack_require__.bind(__webpack_require__, /*! ./langs/php.mjs */ "./node_modules/shiki/dist/langs/php.mjs"))
-  },
-  {
-    "id": "plsql",
-    "name": "PL/SQL",
-    "import": () => __webpack_require__.e(/*! import() */ "node_modules_shiki_dist_langs_plsql_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/plsql.mjs */ "./node_modules/shiki/dist/langs/plsql.mjs"))
-  },
-  {
-    "id": "po",
-    "name": "Gettext PO",
-    "aliases": [
-      "pot",
-      "potx"
-    ],
-    "import": () => __webpack_require__.e(/*! import() */ "node_modules_shiki_dist_langs_po_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/po.mjs */ "./node_modules/shiki/dist/langs/po.mjs"))
+    "import": () => Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_shiki_dist_langs_javascript_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_css_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_html_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_java_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_sql_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_php_mjs")]).then(__webpack_require__.bind(__webpack_require__, /*! ./langs/php.mjs */ "./node_modules/shiki/dist/langs/php.mjs"))
   },
   {
     "id": "postcss",
@@ -11780,54 +10598,12 @@ const bundledLanguagesInfo = [
     "import": () => __webpack_require__.e(/*! import() */ "node_modules_shiki_dist_langs_postcss_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/postcss.mjs */ "./node_modules/shiki/dist/langs/postcss.mjs"))
   },
   {
-    "id": "powerquery",
-    "name": "PowerQuery",
-    "import": () => __webpack_require__.e(/*! import() */ "node_modules_shiki_dist_langs_powerquery_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/powerquery.mjs */ "./node_modules/shiki/dist/langs/powerquery.mjs"))
-  },
-  {
-    "id": "powershell",
-    "name": "PowerShell",
-    "aliases": [
-      "ps",
-      "ps1"
-    ],
-    "import": () => __webpack_require__.e(/*! import() */ "vendors-node_modules_shiki_dist_langs_powershell_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/powershell.mjs */ "./node_modules/shiki/dist/langs/powershell.mjs"))
-  },
-  {
-    "id": "prisma",
-    "name": "Prisma",
-    "import": () => __webpack_require__.e(/*! import() */ "node_modules_shiki_dist_langs_prisma_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/prisma.mjs */ "./node_modules/shiki/dist/langs/prisma.mjs"))
-  },
-  {
-    "id": "prolog",
-    "name": "Prolog",
-    "import": () => __webpack_require__.e(/*! import() */ "vendors-node_modules_shiki_dist_langs_prolog_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/prolog.mjs */ "./node_modules/shiki/dist/langs/prolog.mjs"))
-  },
-  {
-    "id": "proto",
-    "name": "Protocol Buffer 3",
-    "aliases": [
-      "protobuf"
-    ],
-    "import": () => __webpack_require__.e(/*! import() */ "node_modules_shiki_dist_langs_proto_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/proto.mjs */ "./node_modules/shiki/dist/langs/proto.mjs"))
-  },
-  {
     "id": "pug",
     "name": "Pug",
     "aliases": [
       "jade"
     ],
-    "import": () => Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_shiki_dist_langs_javascript_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_css_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_html_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_scss_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_sass_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_coffee_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_stylus_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_pug_mjs")]).then(__webpack_require__.bind(__webpack_require__, /*! ./langs/pug.mjs */ "./node_modules/shiki/dist/langs/pug.mjs"))
-  },
-  {
-    "id": "puppet",
-    "name": "Puppet",
-    "import": () => __webpack_require__.e(/*! import() */ "vendors-node_modules_shiki_dist_langs_puppet_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/puppet.mjs */ "./node_modules/shiki/dist/langs/puppet.mjs"))
-  },
-  {
-    "id": "purescript",
-    "name": "PureScript",
-    "import": () => __webpack_require__.e(/*! import() */ "vendors-node_modules_shiki_dist_langs_purescript_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/purescript.mjs */ "./node_modules/shiki/dist/langs/purescript.mjs"))
+    "import": () => Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_shiki_dist_langs_javascript_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_css_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_html_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_scss_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_sass_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_stylus_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_coffee_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_pug_mjs")]).then(__webpack_require__.bind(__webpack_require__, /*! ./langs/pug.mjs */ "./node_modules/shiki/dist/langs/pug.mjs"))
   },
   {
     "id": "python",
@@ -11838,47 +10614,9 @@ const bundledLanguagesInfo = [
     "import": () => __webpack_require__.e(/*! import() */ "vendors-node_modules_shiki_dist_langs_python_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/python.mjs */ "./node_modules/shiki/dist/langs/python.mjs"))
   },
   {
-    "id": "qml",
-    "name": "QML",
-    "import": () => Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_shiki_dist_langs_javascript_mjs"), __webpack_require__.e("node_modules_shiki_dist_langs_qml_mjs")]).then(__webpack_require__.bind(__webpack_require__, /*! ./langs/qml.mjs */ "./node_modules/shiki/dist/langs/qml.mjs"))
-  },
-  {
-    "id": "qmldir",
-    "name": "QML Directory",
-    "import": () => __webpack_require__.e(/*! import() */ "node_modules_shiki_dist_langs_qmldir_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/qmldir.mjs */ "./node_modules/shiki/dist/langs/qmldir.mjs"))
-  },
-  {
-    "id": "qss",
-    "name": "Qt Style Sheets",
-    "import": () => __webpack_require__.e(/*! import() */ "node_modules_shiki_dist_langs_qss_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/qss.mjs */ "./node_modules/shiki/dist/langs/qss.mjs"))
-  },
-  {
     "id": "r",
     "name": "R",
     "import": () => __webpack_require__.e(/*! import() */ "vendors-node_modules_shiki_dist_langs_r_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/r.mjs */ "./node_modules/shiki/dist/langs/r.mjs"))
-  },
-  {
-    "id": "racket",
-    "name": "Racket",
-    "import": () => __webpack_require__.e(/*! import() */ "vendors-node_modules_shiki_dist_langs_racket_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/racket.mjs */ "./node_modules/shiki/dist/langs/racket.mjs"))
-  },
-  {
-    "id": "raku",
-    "name": "Raku",
-    "aliases": [
-      "perl6"
-    ],
-    "import": () => __webpack_require__.e(/*! import() */ "vendors-node_modules_shiki_dist_langs_raku_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/raku.mjs */ "./node_modules/shiki/dist/langs/raku.mjs"))
-  },
-  {
-    "id": "razor",
-    "name": "ASP.NET Razor",
-    "import": () => Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_shiki_dist_langs_javascript_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_css_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_html_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_csharp_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_razor_mjs")]).then(__webpack_require__.bind(__webpack_require__, /*! ./langs/razor.mjs */ "./node_modules/shiki/dist/langs/razor.mjs"))
-  },
-  {
-    "id": "reg",
-    "name": "Windows Registry Script",
-    "import": () => __webpack_require__.e(/*! import() */ "node_modules_shiki_dist_langs_reg_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/reg.mjs */ "./node_modules/shiki/dist/langs/reg.mjs"))
   },
   {
     "id": "regexp",
@@ -11889,40 +10627,12 @@ const bundledLanguagesInfo = [
     "import": () => __webpack_require__.e(/*! import() */ "node_modules_shiki_dist_langs_regexp_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/regexp.mjs */ "./node_modules/shiki/dist/langs/regexp.mjs"))
   },
   {
-    "id": "rel",
-    "name": "Rel",
-    "import": () => __webpack_require__.e(/*! import() */ "node_modules_shiki_dist_langs_rel_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/rel.mjs */ "./node_modules/shiki/dist/langs/rel.mjs"))
-  },
-  {
-    "id": "riscv",
-    "name": "RISC-V",
-    "import": () => __webpack_require__.e(/*! import() */ "node_modules_shiki_dist_langs_riscv_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/riscv.mjs */ "./node_modules/shiki/dist/langs/riscv.mjs"))
-  },
-  {
-    "id": "rst",
-    "name": "reStructuredText",
-    "import": () => Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_shiki_dist_langs_javascript_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_css_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_html_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_sql_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_java_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_c_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_shellscript_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_lua_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_yaml_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_ruby_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_python_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_cpp_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_cmake_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_rst_mjs")]).then(__webpack_require__.bind(__webpack_require__, /*! ./langs/rst.mjs */ "./node_modules/shiki/dist/langs/rst.mjs"))
-  },
-  {
     "id": "ruby",
     "name": "Ruby",
     "aliases": [
       "rb"
     ],
-    "import": () => Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_shiki_dist_langs_javascript_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_css_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_html_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_sql_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_java_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_c_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_shellscript_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_lua_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_ruby_mjs")]).then(__webpack_require__.bind(__webpack_require__, /*! ./langs/ruby.mjs */ "./node_modules/shiki/dist/langs/ruby.mjs"))
-  },
-  {
-    "id": "rust",
-    "name": "Rust",
-    "aliases": [
-      "rs"
-    ],
-    "import": () => __webpack_require__.e(/*! import() */ "vendors-node_modules_shiki_dist_langs_rust_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/rust.mjs */ "./node_modules/shiki/dist/langs/rust.mjs"))
-  },
-  {
-    "id": "sas",
-    "name": "SAS",
-    "import": () => Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_shiki_dist_langs_sql_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_sas_mjs")]).then(__webpack_require__.bind(__webpack_require__, /*! ./langs/sas.mjs */ "./node_modules/shiki/dist/langs/sas.mjs"))
+    "import": () => Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_shiki_dist_langs_javascript_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_css_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_html_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_c_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_java_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_sql_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_shellscript_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_lua_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_ruby_mjs")]).then(__webpack_require__.bind(__webpack_require__, /*! ./langs/ruby.mjs */ "./node_modules/shiki/dist/langs/ruby.mjs"))
   },
   {
     "id": "sass",
@@ -11930,27 +10640,9 @@ const bundledLanguagesInfo = [
     "import": () => __webpack_require__.e(/*! import() */ "vendors-node_modules_shiki_dist_langs_sass_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/sass.mjs */ "./node_modules/shiki/dist/langs/sass.mjs"))
   },
   {
-    "id": "scala",
-    "name": "Scala",
-    "import": () => __webpack_require__.e(/*! import() */ "vendors-node_modules_shiki_dist_langs_scala_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/scala.mjs */ "./node_modules/shiki/dist/langs/scala.mjs"))
-  },
-  {
-    "id": "scheme",
-    "name": "Scheme",
-    "import": () => __webpack_require__.e(/*! import() */ "node_modules_shiki_dist_langs_scheme_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/scheme.mjs */ "./node_modules/shiki/dist/langs/scheme.mjs"))
-  },
-  {
     "id": "scss",
     "name": "SCSS",
     "import": () => Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_shiki_dist_langs_css_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_scss_mjs")]).then(__webpack_require__.bind(__webpack_require__, /*! ./langs/scss.mjs */ "./node_modules/shiki/dist/langs/scss.mjs"))
-  },
-  {
-    "id": "shaderlab",
-    "name": "ShaderLab",
-    "aliases": [
-      "shader"
-    ],
-    "import": () => __webpack_require__.e(/*! import() */ "vendors-node_modules_shiki_dist_langs_shaderlab_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/shaderlab.mjs */ "./node_modules/shiki/dist/langs/shaderlab.mjs"))
   },
   {
     "id": "shellscript",
@@ -11964,58 +10656,9 @@ const bundledLanguagesInfo = [
     "import": () => __webpack_require__.e(/*! import() */ "vendors-node_modules_shiki_dist_langs_shellscript_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/shellscript.mjs */ "./node_modules/shiki/dist/langs/shellscript.mjs"))
   },
   {
-    "id": "shellsession",
-    "name": "Shell Session",
-    "aliases": [
-      "console"
-    ],
-    "import": () => Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_shiki_dist_langs_shellscript_mjs"), __webpack_require__.e("node_modules_shiki_dist_langs_shellsession_mjs")]).then(__webpack_require__.bind(__webpack_require__, /*! ./langs/shellsession.mjs */ "./node_modules/shiki/dist/langs/shellsession.mjs"))
-  },
-  {
-    "id": "smalltalk",
-    "name": "Smalltalk",
-    "import": () => __webpack_require__.e(/*! import() */ "node_modules_shiki_dist_langs_smalltalk_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/smalltalk.mjs */ "./node_modules/shiki/dist/langs/smalltalk.mjs"))
-  },
-  {
-    "id": "solidity",
-    "name": "Solidity",
-    "import": () => __webpack_require__.e(/*! import() */ "vendors-node_modules_shiki_dist_langs_solidity_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/solidity.mjs */ "./node_modules/shiki/dist/langs/solidity.mjs"))
-  },
-  {
-    "id": "soy",
-    "name": "Closure Templates",
-    "aliases": [
-      "closure-templates"
-    ],
-    "import": () => Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_shiki_dist_langs_javascript_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_css_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_html_mjs"), __webpack_require__.e("node_modules_shiki_dist_langs_soy_mjs")]).then(__webpack_require__.bind(__webpack_require__, /*! ./langs/soy.mjs */ "./node_modules/shiki/dist/langs/soy.mjs"))
-  },
-  {
-    "id": "sparql",
-    "name": "SPARQL",
-    "import": () => __webpack_require__.e(/*! import() */ "node_modules_shiki_dist_langs_sparql_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/sparql.mjs */ "./node_modules/shiki/dist/langs/sparql.mjs"))
-  },
-  {
-    "id": "splunk",
-    "name": "Splunk Query Language",
-    "aliases": [
-      "spl"
-    ],
-    "import": () => __webpack_require__.e(/*! import() */ "node_modules_shiki_dist_langs_splunk_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/splunk.mjs */ "./node_modules/shiki/dist/langs/splunk.mjs"))
-  },
-  {
     "id": "sql",
     "name": "SQL",
     "import": () => __webpack_require__.e(/*! import() */ "vendors-node_modules_shiki_dist_langs_sql_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/sql.mjs */ "./node_modules/shiki/dist/langs/sql.mjs"))
-  },
-  {
-    "id": "ssh-config",
-    "name": "SSH Config",
-    "import": () => __webpack_require__.e(/*! import() */ "node_modules_shiki_dist_langs_ssh-config_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/ssh-config.mjs */ "./node_modules/shiki/dist/langs/ssh-config.mjs"))
-  },
-  {
-    "id": "stata",
-    "name": "Stata",
-    "import": () => Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_shiki_dist_langs_sql_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_stata_mjs")]).then(__webpack_require__.bind(__webpack_require__, /*! ./langs/stata.mjs */ "./node_modules/shiki/dist/langs/stata.mjs"))
   },
   {
     "id": "stylus",
@@ -12028,51 +10671,7 @@ const bundledLanguagesInfo = [
   {
     "id": "svelte",
     "name": "Svelte",
-    "import": () => Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_shiki_dist_langs_javascript_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_css_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_html_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_typescript_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_scss_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_markdown_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_sass_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_less_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_coffee_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_stylus_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_pug_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_svelte_mjs")]).then(__webpack_require__.bind(__webpack_require__, /*! ./langs/svelte.mjs */ "./node_modules/shiki/dist/langs/svelte.mjs"))
-  },
-  {
-    "id": "swift",
-    "name": "Swift",
-    "import": () => __webpack_require__.e(/*! import() */ "vendors-node_modules_shiki_dist_langs_swift_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/swift.mjs */ "./node_modules/shiki/dist/langs/swift.mjs"))
-  },
-  {
-    "id": "system-verilog",
-    "name": "SystemVerilog",
-    "import": () => __webpack_require__.e(/*! import() */ "vendors-node_modules_shiki_dist_langs_system-verilog_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/system-verilog.mjs */ "./node_modules/shiki/dist/langs/system-verilog.mjs"))
-  },
-  {
-    "id": "systemd",
-    "name": "Systemd Units",
-    "import": () => __webpack_require__.e(/*! import() */ "node_modules_shiki_dist_langs_systemd_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/systemd.mjs */ "./node_modules/shiki/dist/langs/systemd.mjs"))
-  },
-  {
-    "id": "tasl",
-    "name": "Tasl",
-    "import": () => __webpack_require__.e(/*! import() */ "node_modules_shiki_dist_langs_tasl_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/tasl.mjs */ "./node_modules/shiki/dist/langs/tasl.mjs"))
-  },
-  {
-    "id": "tcl",
-    "name": "Tcl",
-    "import": () => __webpack_require__.e(/*! import() */ "node_modules_shiki_dist_langs_tcl_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/tcl.mjs */ "./node_modules/shiki/dist/langs/tcl.mjs"))
-  },
-  {
-    "id": "templ",
-    "name": "Templ",
-    "import": () => Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_shiki_dist_langs_javascript_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_css_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_go_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_templ_mjs")]).then(__webpack_require__.bind(__webpack_require__, /*! ./langs/templ.mjs */ "./node_modules/shiki/dist/langs/templ.mjs"))
-  },
-  {
-    "id": "terraform",
-    "name": "Terraform",
-    "aliases": [
-      "tf",
-      "tfvars"
-    ],
-    "import": () => __webpack_require__.e(/*! import() */ "vendors-node_modules_shiki_dist_langs_terraform_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/terraform.mjs */ "./node_modules/shiki/dist/langs/terraform.mjs"))
-  },
-  {
-    "id": "tex",
-    "name": "TeX",
-    "import": () => Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_shiki_dist_langs_r_mjs"), __webpack_require__.e("node_modules_shiki_dist_langs_tex_mjs")]).then(__webpack_require__.bind(__webpack_require__, /*! ./langs/tex.mjs */ "./node_modules/shiki/dist/langs/tex.mjs"))
+    "import": () => Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_shiki_dist_langs_javascript_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_css_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_html_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_typescript_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_scss_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_sass_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_less_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_markdown_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_stylus_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_coffee_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_pug_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_svelte_mjs")]).then(__webpack_require__.bind(__webpack_require__, /*! ./langs/svelte.mjs */ "./node_modules/shiki/dist/langs/svelte.mjs"))
   },
   {
     "id": "toml",
@@ -12085,27 +10684,12 @@ const bundledLanguagesInfo = [
     "aliases": [
       "lit"
     ],
-    "import": () => Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_shiki_dist_langs_javascript_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_css_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_html_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_sql_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_java_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_c_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_typescript_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_ts-tags_mjs")]).then(__webpack_require__.bind(__webpack_require__, /*! ./langs/ts-tags.mjs */ "./node_modules/shiki/dist/langs/ts-tags.mjs"))
-  },
-  {
-    "id": "tsv",
-    "name": "TSV",
-    "import": () => __webpack_require__.e(/*! import() */ "node_modules_shiki_dist_langs_tsv_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/tsv.mjs */ "./node_modules/shiki/dist/langs/tsv.mjs"))
+    "import": () => Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_shiki_dist_langs_javascript_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_css_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_html_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_typescript_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_c_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_java_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_sql_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_ts-tags_mjs")]).then(__webpack_require__.bind(__webpack_require__, /*! ./langs/ts-tags.mjs */ "./node_modules/shiki/dist/langs/ts-tags.mjs"))
   },
   {
     "id": "tsx",
     "name": "TSX",
     "import": () => __webpack_require__.e(/*! import() */ "vendors-node_modules_shiki_dist_langs_tsx_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/tsx.mjs */ "./node_modules/shiki/dist/langs/tsx.mjs"))
-  },
-  {
-    "id": "turtle",
-    "name": "Turtle",
-    "import": () => __webpack_require__.e(/*! import() */ "node_modules_shiki_dist_langs_turtle_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/turtle.mjs */ "./node_modules/shiki/dist/langs/turtle.mjs"))
-  },
-  {
-    "id": "twig",
-    "name": "Twig",
-    "import": () => Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_shiki_dist_langs_javascript_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_css_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_html_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_sql_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_java_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_c_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_shellscript_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_scss_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_lua_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_ruby_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_python_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_php_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_twig_mjs")]).then(__webpack_require__.bind(__webpack_require__, /*! ./langs/twig.mjs */ "./node_modules/shiki/dist/langs/twig.mjs"))
   },
   {
     "id": "typescript",
@@ -12116,75 +10700,14 @@ const bundledLanguagesInfo = [
     "import": () => __webpack_require__.e(/*! import() */ "vendors-node_modules_shiki_dist_langs_typescript_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/typescript.mjs */ "./node_modules/shiki/dist/langs/typescript.mjs"))
   },
   {
-    "id": "typespec",
-    "name": "TypeSpec",
-    "aliases": [
-      "tsp"
-    ],
-    "import": () => __webpack_require__.e(/*! import() */ "vendors-node_modules_shiki_dist_langs_typespec_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/typespec.mjs */ "./node_modules/shiki/dist/langs/typespec.mjs"))
-  },
-  {
-    "id": "typst",
-    "name": "Typst",
-    "aliases": [
-      "typ"
-    ],
-    "import": () => __webpack_require__.e(/*! import() */ "node_modules_shiki_dist_langs_typst_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/typst.mjs */ "./node_modules/shiki/dist/langs/typst.mjs"))
-  },
-  {
-    "id": "v",
-    "name": "V",
-    "import": () => __webpack_require__.e(/*! import() */ "vendors-node_modules_shiki_dist_langs_v_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/v.mjs */ "./node_modules/shiki/dist/langs/v.mjs"))
-  },
-  {
-    "id": "vala",
-    "name": "Vala",
-    "import": () => __webpack_require__.e(/*! import() */ "node_modules_shiki_dist_langs_vala_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/vala.mjs */ "./node_modules/shiki/dist/langs/vala.mjs"))
-  },
-  {
-    "id": "vb",
-    "name": "Visual Basic",
-    "aliases": [
-      "cmd"
-    ],
-    "import": () => __webpack_require__.e(/*! import() */ "node_modules_shiki_dist_langs_vb_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/vb.mjs */ "./node_modules/shiki/dist/langs/vb.mjs"))
-  },
-  {
-    "id": "verilog",
-    "name": "Verilog",
-    "import": () => __webpack_require__.e(/*! import() */ "node_modules_shiki_dist_langs_verilog_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/verilog.mjs */ "./node_modules/shiki/dist/langs/verilog.mjs"))
-  },
-  {
-    "id": "vhdl",
-    "name": "VHDL",
-    "import": () => __webpack_require__.e(/*! import() */ "vendors-node_modules_shiki_dist_langs_vhdl_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/vhdl.mjs */ "./node_modules/shiki/dist/langs/vhdl.mjs"))
-  },
-  {
-    "id": "viml",
-    "name": "Vim Script",
-    "aliases": [
-      "vim",
-      "vimscript"
-    ],
-    "import": () => __webpack_require__.e(/*! import() */ "vendors-node_modules_shiki_dist_langs_viml_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/viml.mjs */ "./node_modules/shiki/dist/langs/viml.mjs"))
-  },
-  {
     "id": "vue",
     "name": "Vue",
-    "import": () => Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_shiki_dist_langs_javascript_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_css_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_html_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_typescript_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_scss_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_markdown_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_yaml_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_sass_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_less_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_coffee_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_stylus_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_jsx_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_tsx_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_pug_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_graphql_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_vue_mjs")]).then(__webpack_require__.bind(__webpack_require__, /*! ./langs/vue.mjs */ "./node_modules/shiki/dist/langs/vue.mjs"))
+    "import": () => Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_shiki_dist_langs_javascript_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_css_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_html_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_typescript_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_scss_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_sass_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_tsx_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_less_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_markdown_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_stylus_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_coffee_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_jsx_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_yaml_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_graphql_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_pug_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_vue_mjs")]).then(__webpack_require__.bind(__webpack_require__, /*! ./langs/vue.mjs */ "./node_modules/shiki/dist/langs/vue.mjs"))
   },
   {
     "id": "vue-html",
     "name": "Vue HTML",
-    "import": () => Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_shiki_dist_langs_javascript_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_css_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_html_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_typescript_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_scss_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_markdown_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_yaml_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_sass_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_less_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_coffee_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_stylus_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_jsx_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_tsx_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_pug_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_graphql_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_vue_mjs"), __webpack_require__.e("node_modules_shiki_dist_langs_vue-html_mjs")]).then(__webpack_require__.bind(__webpack_require__, /*! ./langs/vue-html.mjs */ "./node_modules/shiki/dist/langs/vue-html.mjs"))
-  },
-  {
-    "id": "vyper",
-    "name": "Vyper",
-    "aliases": [
-      "vy"
-    ],
-    "import": () => __webpack_require__.e(/*! import() */ "vendors-node_modules_shiki_dist_langs_vyper_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/vyper.mjs */ "./node_modules/shiki/dist/langs/vyper.mjs"))
+    "import": () => Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_shiki_dist_langs_javascript_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_css_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_html_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_typescript_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_scss_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_sass_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_tsx_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_less_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_markdown_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_stylus_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_coffee_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_jsx_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_yaml_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_graphql_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_pug_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_vue_mjs"), __webpack_require__.e("node_modules_shiki_dist_langs_vue-html_mjs")]).then(__webpack_require__.bind(__webpack_require__, /*! ./langs/vue-html.mjs */ "./node_modules/shiki/dist/langs/vue-html.mjs"))
   },
   {
     "id": "wasm",
@@ -12192,44 +10715,14 @@ const bundledLanguagesInfo = [
     "import": () => __webpack_require__.e(/*! import() */ "vendors-node_modules_shiki_dist_langs_wasm_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/wasm.mjs */ "./node_modules/shiki/dist/langs/wasm.mjs"))
   },
   {
-    "id": "wenyan",
-    "name": "Wenyan",
-    "aliases": [
-      "\u6587\u8A00"
-    ],
-    "import": () => __webpack_require__.e(/*! import() */ "node_modules_shiki_dist_langs_wenyan_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/wenyan.mjs */ "./node_modules/shiki/dist/langs/wenyan.mjs"))
-  },
-  {
     "id": "wgsl",
     "name": "WGSL",
     "import": () => __webpack_require__.e(/*! import() */ "node_modules_shiki_dist_langs_wgsl_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/wgsl.mjs */ "./node_modules/shiki/dist/langs/wgsl.mjs"))
   },
   {
-    "id": "wikitext",
-    "name": "Wikitext",
-    "aliases": [
-      "mediawiki",
-      "wiki"
-    ],
-    "import": () => Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_shiki_dist_langs_javascript_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_css_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_html_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_sql_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_java_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_c_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_typescript_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_shellscript_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_scss_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_lua_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_markdown_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_yaml_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_sass_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_less_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_ruby_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_coffee_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_python_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_stylus_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_cpp_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_r_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_pug_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_csharp_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_go_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_haskell_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_julia_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_scala_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_rust_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_php_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_objective-c_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_swift_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_perl_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_erlang_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_groovy_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_elixir_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_gnuplot_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_latex_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_fsharp_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_powershell_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_bat_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_handlebars_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_raku_mjs"), __webpack_require__.e("vendors-node_modules_shiki_dist_langs_wikitext_mjs")]).then(__webpack_require__.bind(__webpack_require__, /*! ./langs/wikitext.mjs */ "./node_modules/shiki/dist/langs/wikitext.mjs"))
-  },
-  {
-    "id": "wolfram",
-    "name": "Wolfram",
-    "aliases": [
-      "wl"
-    ],
-    "import": () => __webpack_require__.e(/*! import() */ "vendors-node_modules_shiki_dist_langs_wolfram_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/wolfram.mjs */ "./node_modules/shiki/dist/langs/wolfram.mjs"))
-  },
-  {
     "id": "xml",
     "name": "XML",
-    "import": () => Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_shiki_dist_langs_java_mjs"), __webpack_require__.e("node_modules_shiki_dist_langs_xml_mjs-_97832")]).then(__webpack_require__.bind(__webpack_require__, /*! ./langs/xml.mjs */ "./node_modules/shiki/dist/langs/xml.mjs"))
-  },
-  {
-    "id": "xsl",
-    "name": "XSL",
-    "import": () => Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_shiki_dist_langs_java_mjs"), __webpack_require__.e("node_modules_shiki_dist_langs_xsl_mjs")]).then(__webpack_require__.bind(__webpack_require__, /*! ./langs/xsl.mjs */ "./node_modules/shiki/dist/langs/xsl.mjs"))
+    "import": () => Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_shiki_dist_langs_java_mjs"), __webpack_require__.e("node_modules_shiki_dist_langs_xml_mjs")]).then(__webpack_require__.bind(__webpack_require__, /*! ./langs/xml.mjs */ "./node_modules/shiki/dist/langs/xml.mjs"))
   },
   {
     "id": "yaml",
@@ -12238,16 +10731,6 @@ const bundledLanguagesInfo = [
       "yml"
     ],
     "import": () => __webpack_require__.e(/*! import() */ "vendors-node_modules_shiki_dist_langs_yaml_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/yaml.mjs */ "./node_modules/shiki/dist/langs/yaml.mjs"))
-  },
-  {
-    "id": "zenscript",
-    "name": "ZenScript",
-    "import": () => __webpack_require__.e(/*! import() */ "node_modules_shiki_dist_langs_zenscript_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/zenscript.mjs */ "./node_modules/shiki/dist/langs/zenscript.mjs"))
-  },
-  {
-    "id": "zig",
-    "name": "Zig",
-    "import": () => __webpack_require__.e(/*! import() */ "node_modules_shiki_dist_langs_zig_mjs").then(__webpack_require__.bind(__webpack_require__, /*! ./langs/zig.mjs */ "./node_modules/shiki/dist/langs/zig.mjs"))
   }
 ];
 const bundledLanguagesBase = Object.fromEntries(bundledLanguagesInfo.map((i) => [i.id, i.import]));
@@ -12255,6 +10738,45 @@ const bundledLanguagesAlias = Object.fromEntries(bundledLanguagesInfo.flatMap((i
 const bundledLanguages = {
   ...bundledLanguagesBase,
   ...bundledLanguagesAlias
+};
+
+const createHighlighter = /* @__PURE__ */ (0,_shikijs_core__WEBPACK_IMPORTED_MODULE_0__.createdBundledHighlighter)(
+  bundledLanguages,
+  _themes_mjs__WEBPACK_IMPORTED_MODULE_1__.bundledThemes,
+  _chunks_wasm_dynamic_mjs__WEBPACK_IMPORTED_MODULE_3__.g
+);
+const {
+  codeToHtml,
+  codeToHast,
+  codeToTokensBase,
+  codeToTokens,
+  codeToTokensWithThemes,
+  getSingletonHighlighter,
+  getLastGrammarState
+} = /* @__PURE__ */ (0,_shikijs_core__WEBPACK_IMPORTED_MODULE_0__.createSingletonShorthands)(
+  createHighlighter
+);
+const getHighlighter = (options) => {
+  return createHighlighter(options);
+};
+
+
+
+
+/***/ }),
+
+/***/ "./node_modules/shiki/dist/chunks/wasm-dynamic.mjs":
+/*!*********************************************************!*\
+  !*** ./node_modules/shiki/dist/chunks/wasm-dynamic.mjs ***!
+  \*********************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   g: () => (/* binding */ getWasmInlined)
+/* harmony export */ });
+const getWasmInlined = async (info) => {
+  return __webpack_require__.e(/*! import() */ "vendors-node_modules_shiki_dist_wasm_mjs").then(__webpack_require__.bind(__webpack_require__, /*! shiki/wasm */ "./node_modules/shiki/dist/wasm.mjs")).then((wasm) => wasm.default(info));
 };
 
 
@@ -12838,7 +11360,7 @@ const bundledThemes = Object.fromEntries(bundledThemesInfo.map((i) => [i.id, i.i
   \************************/
 /***/ ((module) => {
 
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"wpperformance/shiki-my-code","version":"0.0.1","title":"Shiki My Code","category":"widgets","icon":"code","description":"Highlight your code with Shiki","example":{"attributes":{"theme":"github-light","language":"php","content":"<code>echo \'Hello, World!\';</code>"}},"attributes":{"lang":{"type":"string","default":"php"},"themeLight":{"type":"string","default":"github-light-default"},"themeDark":{"type":"string","default":"github-dark-default"},"contentHighlight":{"type":"string"},"showNumber":{"type":"boolean","default":true},"content":{"type":"string"}},"supports":{"align":["wide","full"],"anchor":true,"spacing":{"margin":["top","bottom"],"padding":true,"__experimentalDefaultControls":{"margin":false,"padding":false}}},"editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","render":"file:./render.php","textdomain":"shiki-my-code"}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"wpperformance/shiki-my-code","version":"0.0.1","title":"Shiki My Code","category":"widgets","icon":"code","description":"Highlight your code with Shiki","example":{"attributes":{"theme":"github-light","language":"php","content":"<code>echo \'Hello, World!\';</code>"}},"attributes":{"lang":{"type":"string","default":"php"},"themeLight":{"type":"string","default":"github-light-default"},"themeDark":{"type":"string","default":"github-dark-default"},"contentHighlight":{"type":"string","default":"Write code…"},"showNumber":{"type":"boolean","default":true},"content":{"type":"string"}},"supports":{"align":["wide","full"],"anchor":true,"spacing":{"margin":["top","bottom"],"padding":true,"__experimentalDefaultControls":{"margin":false,"padding":false}}},"editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","render":"file:./render.php","textdomain":"shiki-my-code"}');
 
 /***/ })
 

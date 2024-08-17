@@ -28,7 +28,8 @@
       "default": "github-dark-default"
     },
     "contentHighlight": {
-      "type": "string"
+      "type": "string",
+      "default": "Write code…"
     },
     "showNumber": {
       "type": "boolean",
