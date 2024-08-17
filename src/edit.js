@@ -1,21 +1,11 @@
 import {__} from '@wordpress/i18n';
 import {RichText, useBlockProps} from '@wordpress/block-editor';
 import {createBlock, getDefaultBlockName} from '@wordpress/blocks';
-import {useEffect, useState} from '@wordpress/element';
+import {useEffect, useState, useRef} from '@wordpress/element';
 // controls
 import Panel from "./panel";
 import Control from "./control";
-// shiki
-import {
-    codeToHtml, BundledLanguage,
-    BundledTheme,
-} from "shiki/bundle/web";
-import {
-    transformerNotationDiff,
-    transformerNotationHighlight,
-    transformerNotationFocus,
-    transformerNotationWordHighlight
-} from '@shikijs/transformers';
+import useHighlighter from "./useHighlighter";
 
 import './style.scss';
 
@@ -29,28 +19,7 @@ export default function CodeEdit({
 
     const [mode, setMode] = useState('view')
 
-    useEffect(() => {
-        async function highlightCode(_content) {
-            // replace &lt; to <
-            const _c = _content?.replace(/&lt;/g, '<');
-            const code = await codeToHtml(_c, {
-                lang: attributes.lang,
-                themes: {
-                    light: attributes.themeLight,
-                    dark: attributes.themeDark
-                },
-                transformers: [
-                    transformerNotationDiff(),
-                    transformerNotationHighlight(),
-                    transformerNotationFocus(),
-                    transformerNotationWordHighlight(),
-                ]
-            })
-            setAttributes({contentHighlight: code})
-        }
-
-        highlightCode(attributes.content)
-    }, [attributes.content, attributes.lang, attributes.themeLight, attributes.themeDark])
+    useHighlighter({attributes, setAttributes})
 
     const blockProps = useBlockProps({
         className: attributes.showNumber ? 'shiki-line-numbers' : '',
