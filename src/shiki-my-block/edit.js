@@ -1,11 +1,10 @@
 import {__} from '@wordpress/i18n';
+import {Spinner} from '@wordpress/components';
 import {RichText, useBlockProps} from '@wordpress/block-editor';
 import {createBlock, getDefaultBlockName} from '@wordpress/blocks';
-import {useState} from '@wordpress/element';
 // controls
 import Panel from "./components/Panel";
 import Control from "./components/Control";
-import Loading from "./components/Loader";
 // hooks
 import useHighlighter from "./hooks/useHighlighter";
 
@@ -18,9 +17,8 @@ export default function CodeEdit({
                                      mergeBlocks,
                                  }) {
 
-    const [mode, setMode] = useState('view')
 
-    const {isReady} = useHighlighter({attributes, setAttributes})
+    const {isReady, mode, setMode} = useHighlighter({attributes, setAttributes})
 
     const blockProps = useBlockProps({
         className: attributes.showNumber ? 'shiki-line-numbers' : '',
@@ -28,7 +26,7 @@ export default function CodeEdit({
 
     if (!isReady) {
         return <div style={{textAlign: 'center'}}>
-            <span>{__('Loading code…')}</span><Loading/></div>
+            <span>{__('Loading code…')}</span><Spinner/></div>
     }
 
     return (

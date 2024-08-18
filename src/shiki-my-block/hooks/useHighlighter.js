@@ -1,5 +1,6 @@
 import {useEffect, useRef, useState} from "@wordpress/element";
 import apiFetch from '@wordpress/api-fetch';
+import {__} from '@wordpress/i18n';
 import {createHighlighter} from "shiki/bundle/web";
 import {
     transformerNotationDiff, transformerNotationFocus,
@@ -11,6 +12,9 @@ const useHighlighter = ({attributes, setAttributes}) => {
     const [token, setToken] = useState(null)
     // highlighter instance is ready
     const [isReady, setIsReady] = useState(false)
+    // mode
+    const [mode, setMode] = useState('view')
+
     // highlighter instance
     const highlighter = useRef(null)
 
@@ -31,6 +35,7 @@ const useHighlighter = ({attributes, setAttributes}) => {
                     themeDark = settings.wpperformance_shiki_my_code.theme_dark ?? 'github-dark-default'
                     setAttributes({themeDark});
                 }
+                setMode(settings.wpperformance_shiki_my_code.mode ?? 'view');
             }
 
             // create highlighter instance
@@ -64,11 +69,11 @@ const useHighlighter = ({attributes, setAttributes}) => {
 
     useEffect(() => {
         const highlightCode = (_content) => {
-            if (!highlighter.current || !_content) {
+            if (!highlighter.current) {
                 return
             }
             // replace &lt; to <
-            const _c = _content?.replace(/&lt;/g, '<');
+            const _c = _content ? _content?.replace(/&lt;/g, '<') : __('Write code…');
             const code = highlighter.current.codeToHtml(_c, {
                 lang: attributes.lang,
                 themes: {
@@ -89,7 +94,7 @@ const useHighlighter = ({attributes, setAttributes}) => {
 
     }, [attributes.content, highlighter, token, isReady])
 
-    return {isReady}
+    return {isReady, mode, setMode}
 
 }
 

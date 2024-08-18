@@ -3,6 +3,8 @@ import {
     PanelBody,
     PanelRow,
     SelectControl,
+    __experimentalToggleGroupControl as ToggleGroupControl,
+    __experimentalToggleGroupControlOption as ToggleGroupControlOption,
     Button,
 } from '@wordpress/components'
 import {__} from '@wordpress/i18n'
@@ -19,11 +21,13 @@ const PanelSettings = () => {
 
     const [themeLight, setThemeLight] = useState()
     const [themeDark, setThemeDark] = useState()
+    const [mode, setMode] = useState('edit');
 
     useEffect(() => {
         apiFetch({path: '/wp/v2/settings'}).then((settings) => {
             setThemeLight(settings.wpperformance_shiki_my_code.theme_light ?? 'github-light-default');
             setThemeDark(settings.wpperformance_shiki_my_code.theme_dark ?? 'github-dark-default');
+            setMode(settings.wpperformance_shiki_my_code.mode ?? 'edit');
         });
     }, []);
 
@@ -35,6 +39,7 @@ const PanelSettings = () => {
                 wpperformance_shiki_my_code: {
                     theme_light: themeLight,
                     theme_dark: themeDark,
+                    mode: mode,
                 },
             },
         }).then(() => {
@@ -73,6 +78,24 @@ const PanelSettings = () => {
                             options={themes['dark']}
                             onChange={(themeDark) => setThemeDark(themeDark)}
                         />
+                    </PanelRow>
+                    <PanelRow>
+                        <ToggleGroupControl
+                            value={mode}
+                            onChange={setMode}
+                            __nextHasNoMarginBottom
+                            isBlock
+                            label={__('Default mode for Shiki block', 'shiki-my-code')}
+                        >
+                            <ToggleGroupControlOption
+                                label="Edit"
+                                value="edit"
+                            />
+                            <ToggleGroupControlOption
+                                label="View"
+                                value="view"
+                            />
+                        </ToggleGroupControl>
                     </PanelRow>
                 </PanelBody>
                 <Button variant="primary" onClick={handlerSave}

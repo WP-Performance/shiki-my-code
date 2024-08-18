@@ -77,6 +77,7 @@ function wpperformance_shiki_my_code_settings() {
 	$default = array(
 		'theme_dark'  => 'github-dark-default',
 		'theme_light' => 'github-light-default',
+		'mode'        => 'view',
 	);
 	$schema  = array(
 		'type'       => 'object',
@@ -85,6 +86,9 @@ function wpperformance_shiki_my_code_settings() {
 				'type' => 'string',
 			),
 			'theme_light' => array(
+				'type' => 'string',
+			),
+			'mode'        => array(
 				'type' => 'string',
 			),
 		),
