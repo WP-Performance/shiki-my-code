@@ -3,6 +3,7 @@ import {
     PanelBody,
     PanelRow,
     SelectControl,
+    __experimentalHeading as Heading,
     __experimentalToggleGroupControl as ToggleGroupControl,
     __experimentalToggleGroupControlOption as ToggleGroupControlOption,
     Button,
@@ -56,7 +57,9 @@ const PanelSettings = () => {
             <Panel>
                 <PanelBody>
                     <PanelRow>
-                        <h2>{__('Default themes for Shiki block', 'shiki-my-code')}</h2>
+                        <Heading level={1}>
+                            {__('Settings for Shiki My Code block', 'shiki-my-code')}
+                        </Heading>
                     </PanelRow>
                     <PanelRow>
                         <p>{__('This settings don\'t change the default' +
