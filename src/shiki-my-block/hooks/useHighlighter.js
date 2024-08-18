@@ -1,4 +1,5 @@
 import {useEffect, useRef, useState} from "@wordpress/element";
+import apiFetch from '@wordpress/api-fetch';
 import {createHighlighter} from "shiki/bundle/web";
 import {
     transformerNotationDiff, transformerNotationFocus,
@@ -14,10 +15,27 @@ const useHighlighter = ({attributes, setAttributes}) => {
     const highlighter = useRef(null)
 
     useEffect(() => {
-        // create highlighter instance
         const _createHighlighter = async () => {
+
+            let themeLight = attributes.themeLight;
+            let themeDark = attributes.themeDark;
+            // get default theme from settings
+            const settings = await apiFetch({path: '/wp/v2/settings'});
+            if (settings) {
+                // set default theme if not set
+                if (attributes.themeLight === '') {
+                    themeLight = settings.wpperformance_shiki_my_code.theme_light ?? 'github-light-default';
+                    setAttributes({themeLight});
+                }
+                if (attributes.themeDark === '') {
+                    themeDark = settings.wpperformance_shiki_my_code.theme_dark ?? 'github-dark-default'
+                    setAttributes({themeDark});
+                }
+            }
+
+            // create highlighter instance
             const h = await createHighlighter({
-                themes: [attributes.themeLight, attributes.themeDark],
+                themes: [themeLight, themeDark],
                 langs: [attributes.lang],
             })
             highlighter.current = h
@@ -46,7 +64,7 @@ const useHighlighter = ({attributes, setAttributes}) => {
 
     useEffect(() => {
         const highlightCode = (_content) => {
-            if (!highlighter.current) {
+            if (!highlighter.current || !_content) {
                 return
             }
             // replace &lt; to <

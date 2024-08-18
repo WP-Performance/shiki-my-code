@@ -21,11 +21,11 @@
     },
     "themeLight": {
       "type": "string",
-      "default": "github-light-default"
+      "default": ""
     },
     "themeDark": {
       "type": "string",
-      "default": "github-dark-default"
+      "default": ""
     },
     "contentHighlight": {
       "type": "string",

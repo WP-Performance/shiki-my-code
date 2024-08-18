@@ -10,6 +10,7 @@ import {languages, themes} from '../options'
 const Panel = ({props}) => {
     const {attributes, setAttributes} = props
     const {lang, showNumber, themeLight, themeDark} = attributes
+
     return (
         <InspectorControls>
             <PanelBody title={__('Lines numbers', 'shiki-my-code')}>
