@@ -64,10 +64,15 @@ const PanelSettings = () => {
                             ' just for the themes selected by default when you add a block in content', 'shiki-my-code')}</p>
                     </PanelRow>
                     <PanelRow>
+                        <p>{__('Find playground theme on', 'shiki-my-code')} <a
+                            href="https://shiki.style/themes" target="_blank">Shiki
+                            Documentation</a></p>
+                    </PanelRow>
+                    <PanelRow>
                         <SelectControl
                             label={__('Theme Light', 'shiki-my-code')}
                             value={themeLight}
-                            options={themes['light']}
+                            options={[...themes['light'], ...themes['dark']]}
                             onChange={(themeLight) => setThemeLight(themeLight)}
                         />
                     </PanelRow>

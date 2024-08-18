@@ -32,7 +32,7 @@ const Panel = ({props}) => {
                 <SelectControl
                     label={__('Theme Light', 'shiki-my-code')}
                     value={themeLight}
-                    options={themes['light']}
+                    options={[...themes['light'], ...themes['dark']]}
                     onChange={(themeLight) => setAttributes({themeLight})}
                 /><SelectControl
                 label={__('Theme Dark', 'shiki-my-code')}
