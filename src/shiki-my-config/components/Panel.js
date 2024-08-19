@@ -18,7 +18,7 @@ import Notices from './notices';
 import {themes} from '../../shiki-my-block/options'
 
 const PanelSettings = () => {
-    const {createSuccessNotice} = useDispatch(noticesStore);
+    const {createSuccessNotice, removeNotice} = useDispatch(noticesStore);
 
     const [themeLight, setThemeLight] = useState()
     const [themeDark, setThemeDark] = useState()
@@ -43,10 +43,14 @@ const PanelSettings = () => {
                     mode: mode,
                 },
             },
-        }).then(() => {
-            createSuccessNotice(
+        }).then(async () => {
+            const t = await createSuccessNotice(
                 __('Settings saved.', 'shiki-my-code')
             );
+            setTimeout(() => {
+                removeNotice(t.notice.id);
+            }, 5000);
+
         });
     };
 

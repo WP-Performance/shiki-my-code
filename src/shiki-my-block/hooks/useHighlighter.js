@@ -53,7 +53,7 @@ const useHighlighter = ({attributes, setAttributes}) => {
     useEffect(() => {
         // load theme and language when attributes change
         const loadTheme = async () => {
-            if (!highlighter.current) {
+            if (!highlighter.current || attributes.themeLight === '' || attributes.themeDark === '') {
                 return
             }
             await highlighter.current.loadTheme(attributes.themeLight)
@@ -69,9 +69,10 @@ const useHighlighter = ({attributes, setAttributes}) => {
 
     useEffect(() => {
         const highlightCode = (_content) => {
-            if (!highlighter.current) {
+            if (!highlighter.current || !token) {
                 return
             }
+
             // replace &lt; to <
             const _c = _content ? _content?.replace(/&lt;/g, '<') : __('Write code…');
             const code = highlighter.current.codeToHtml(_c, {
@@ -93,6 +94,7 @@ const useHighlighter = ({attributes, setAttributes}) => {
         highlightCode(attributes.content)
 
     }, [attributes.content, highlighter, token, isReady])
+
 
     return {isReady, mode, setMode}
 
